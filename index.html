@@ -332,8 +332,9 @@ body {
   top: 100%;
   left: 0;
   right: 0;
-  background: #EFE6D6;
+  background: #F9F6EF;
   box-shadow: 0 8px 24px rgba(42, 14, 38, 0.15);
+  border-radius: 0 0 20px 20px;
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.3s ease;
@@ -1777,6 +1778,8 @@ body {
   .otzyv-card {
     background-color: #EFE6D6;
     border: 1px solid #D2C1A1;
+    border-radius: 14px;
+    overflow: hidden;
     margin-bottom: 16px;
     text-align: center;
     box-shadow: 0 4px 14px rgba(42, 14, 38, 0.06);
@@ -8093,7 +8096,7 @@ html body .contact-sub {
 
     <h2 class="hero-message">Карта рождения.<br>Стратегия на 2 года.</h2>
     <p class="hero-sub">Не угадываете — действуете по плану, в нужное время.</p>
-    <p style="font-family:'Lora',Georgia,serif; font-style:italic; font-size:14px; color:rgba(42,14,38,0.65); text-align:center; margin-top:10px; line-height:1.5;">«Рядом со мной человек начинает думать спокойнее, глубже и взрослее.»</p>
+    <p style="font-family:'Lora',Georgia,serif; font-style:italic; font-size:14px; color:rgba(42,14,38,0.65); text-align:center; margin-top:10px; margin-bottom:28px; line-height:1.5;">«Рядом со мной человек начинает думать спокойнее, глубже и взрослее.»</p>
 
 
     <div class="cta-group">
@@ -8188,12 +8191,12 @@ html body .contact-sub {
       <div class="title-accent-line" style="margin:6px auto 0 auto !important;"></div>
     </div>
 
-    <p class="intro-text" id="category-start" style="margin-top:4px;">Выберите направление:</p>
+    <p id="category-start" style="font-family:'Lora',Georgia,serif; font-size:14px; font-style:italic; color:#A57A2E; text-align:center; margin-top:20px; margin-bottom:6px;">Один разбор — одна сфера жизни.<br>Глубоко, конкретно, с датами.</p>
 
-    <p style="font-family:'Lora',Georgia,serif; font-size:14px; font-style:italic; color:#A57A2E; text-align:center; margin-top:10px; margin-bottom:6px;">Один разбор — одна сфера жизни.<br>Глубоко, конкретно, с датами.</p>
+    <div style="width:36px; height:1px; background:rgba(165,122,46,0.35); margin:26px auto 0;"></div>
 
     <!-- ═════════ СИТУАЦИИ ═════════ -->
-    <div class="category-label">Ситуации</div>
+    <div class="category-label" style="margin-top:14px !important;">Ситуации</div>
     <div class="category-sub">Конкретные решения и события.</div>
 
     <a href="javascript:void(0)" onclick="showPage('karera-dengi'); return false;" class="service-tile top-service">
@@ -8617,7 +8620,7 @@ details[open] > .price-toggle-dark::after {
 
     <img class="section-photo" alt="Татьяна" src="images/photo-13.jpg" width="853" height="1280" loading="lazy">
 
-    <p class="coaching-intro">Работаю с теми, кто устал топтаться на месте — и готов сделать следующий шаг.<br>От одной сессии до <span>глубокой работы на 2–3 месяца</span>.</p>
+    <p class="coaching-intro">От разовой сессии до <span>глубокой работы на 2–3 месяца</span> — форматы под любой запрос.</p>
 
     <div class="price-section">
 
@@ -9052,7 +9055,8 @@ details[open] > .price-toggle-dark::after {
     <div style="width:40px; height:1px; background:rgba(165,122,46,0.35); margin:10px auto 14px;"></div>
     <p style="font-family:'Lora',Georgia,serif; font-size:15px; font-style:italic; line-height:1.65; color:#A57A2E; margin-bottom:0; text-align:center;">Карта рождения — это не гороскоп из журнала. Это описание вашей личности: что даётся легко, что мешает и на что вы на самом деле способны.</p>
 
-    <div class="category-label" style="text-align:center; margin-top:24px; margin-bottom:10px;">Что узнаете</div>
+    <div style="width:36px; height:1px; background:rgba(165,122,46,0.35); margin:20px auto 0;"></div>
+    <div class="category-label" style="text-align:center; font-size:13px !important; margin-top:6px; margin-bottom:12px;">Что узнаете:</div>
     <ul class="questions-list">
       <li>Ваши сильные стороны по карте — то, на что можно опираться.</li>
       <li>Какие черты характера мешают вам двигаться вперёд.</li>
@@ -9085,7 +9089,8 @@ details[open] > .price-toggle-dark::after {
     <div style="width:40px; height:1px; background:rgba(165,122,46,0.35); margin:10px auto 14px;"></div>
     <p style="font-family:'Lora',Georgia,serif; font-size:15px; font-style:italic; line-height:1.65; color:#A57A2E; margin-bottom:0; text-align:center;">Есть всё — но ощущение, что живёте не своей жизнью.<br>Карта рождения объяснит почему.</p>
 
-    <div class="category-label" style="text-align:center; margin-top:24px; margin-bottom:10px;">Что узнаете</div>
+    <div style="width:36px; height:1px; background:rgba(165,122,46,0.35); margin:20px auto 0;"></div>
+    <div class="category-label" style="text-align:center; font-size:13px !important; margin-top:6px; margin-bottom:12px;">Что узнаете:</div>
     <ul class="questions-list">
       <li>Почему вы здесь — какая у вас задача в этой жизни.</li>
       <li>Что вам дано от природы и чего вы сами не замечаете.</li>
@@ -9117,7 +9122,8 @@ details[open] > .price-toggle-dark::after {
     <div style="width:40px; height:1px; background:rgba(165,122,46,0.35); margin:10px auto 14px;"></div>
     <p style="font-family:'Lora',Georgia,serif; font-size:15px; font-style:italic; line-height:1.65; color:#A57A2E; margin-bottom:0; text-align:center;">Не все гороскопы равны по масштабу. Разбор покажет, что именно заложено в вашей карте — и куда это может привести.</p>
 
-    <div class="category-label" style="text-align:center; margin-top:24px; margin-bottom:10px;">Что узнаете</div>
+    <div style="width:36px; height:1px; background:rgba(165,122,46,0.35); margin:20px auto 0;"></div>
+    <div class="category-label" style="text-align:center; font-size:13px !important; margin-top:6px; margin-bottom:12px;">Что узнаете:</div>
     <ul class="questions-list">
       <li>Есть ли в вашей карте королевские звёзды и в каких точках.</li>
       <li>Когда именно включается их влияние — в период (дашу) этой звезды или её управителя, а не постоянно.</li>
@@ -9149,7 +9155,8 @@ details[open] > .price-toggle-dark::after {
     <div style="width:40px; height:1px; background:rgba(165,122,46,0.35); margin:10px auto 14px;"></div>
     <p style="font-family:'Lora',Georgia,serif; font-size:15px; font-style:italic; line-height:1.65; color:#A57A2E; margin-bottom:0; text-align:center;">Не общий гороскоп. Ваш личный — с датами, периодами и конкретными сферами жизни.</p>
 
-    <div class="category-label" style="text-align:center; margin-top:24px; margin-bottom:10px;">Что узнаете</div>
+    <div style="width:36px; height:1px; background:rgba(165,122,46,0.35); margin:20px auto 0;"></div>
+    <div class="category-label" style="text-align:center; font-size:13px !important; margin-top:6px; margin-bottom:12px;">Что узнаете:</div>
     <ul class="questions-list">
       <li>Самые важные окна года — и примерные сроки, когда они открываются.</li>
       <li>Когда открывается окно для старта: в карьере, личной жизни, переезде.</li>
@@ -9157,7 +9164,8 @@ details[open] > .price-toggle-dark::after {
       <li>Тенденции по сферам: деньги, отношения, здоровье, дети.</li>
     </ul>
 
-    <p style="font-size:13px; color:rgba(42,14,38,0.65); line-height:1.5; text-align:center; margin-top:16px; font-style:italic;">Этот разбор даёт полную картину года — по месяцам, по всем ключевым сферам сразу. Если же у вас прямо сейчас пересекается сразу несколько больших задач (например, переезд, новые отношения и поступление детей) — для такого есть отдельный, более глубокий формат: <a href="javascript:void(0)" onclick="showPage('individualnaya'); return false;" style="color:#A57A2E; text-decoration:underline; font-style:normal;">Индивидуальная работа</a>.</p>
+    <p style="font-size:13px; color:rgba(42,14,38,0.65); line-height:1.5; text-align:center; margin-top:16px; font-style:italic;">Полная картина года — по месяцам и всем сферам.</p>
+    <p style="font-size:13px; color:rgba(42,14,38,0.65); line-height:1.5; text-align:center; margin-top:12px; font-style:italic;">Если же у вас прямо сейчас пересекается сразу несколько больших задач (например, переезд, новые отношения и поступление детей) — для такого есть отдельный, более глубокий формат: <a href="javascript:void(0)" onclick="showPage('individualnaya'); return false;" style="color:#A57A2E; text-decoration:underline; font-style:normal;">Индивидуальная работа</a>.</p>
 
     <div style="text-align:center; margin-top:22px; margin-bottom:4px;">
       <span style="font-size:12px; font-weight:600; color:#A57A2E;">Стоимость</span>
@@ -9183,7 +9191,8 @@ details[open] > .price-toggle-dark::after {
     <div style="width:40px; height:1px; background:rgba(165,122,46,0.35); margin:10px auto 14px;"></div>
     <p style="font-family:'Lora',Georgia,serif; font-size:15px; font-style:italic; line-height:1.65; color:#A57A2E; margin-bottom:0; text-align:center;">Вы умная, состоявшаяся, самодостаточная. И при этом в личной жизни — повторяется один и тот же сценарий. Карта объяснит почему — и покажет, когда это изменится.</p>
 
-    <div class="category-label" style="text-align:center; margin-top:24px; margin-bottom:10px;">Что узнаете</div>
+    <div style="width:36px; height:1px; background:rgba(165,122,46,0.35); margin:20px auto 0;"></div>
+    <div class="category-label" style="text-align:center; font-size:13px !important; margin-top:6px; margin-bottom:12px;">Что узнаете:</div>
     <ul class="questions-list">
       <li>Какой тип партнёра органичен вам по карте — и как его узнавать в реальности, а не додумывать.</li>
       <li>Куда движутся текущие отношения по циклам — и что зависит от вас, а что нет.</li>
@@ -9215,7 +9224,8 @@ details[open] > .price-toggle-dark::after {
     <div style="width:40px; height:1px; background:rgba(165,122,46,0.35); margin:10px auto 14px;"></div>
     <p style="font-family:'Lora',Georgia,serif; font-size:15px; font-style:italic; line-height:1.65; color:#A57A2E; margin-bottom:0; text-align:center;">Прежде чем вкладывать годы и чувства — стоит понять, кто он на самом деле. Карта скажет честно.</p>
 
-    <div class="category-label" style="text-align:center; margin-top:24px; margin-bottom:10px;">Что узнаете</div>
+    <div style="width:36px; height:1px; background:rgba(165,122,46,0.35); margin:20px auto 0;"></div>
+    <div class="category-label" style="text-align:center; font-size:13px !important; margin-top:6px; margin-bottom:12px;">Что узнаете:</div>
     <ul class="questions-list">
       <li>Кто он на самом деле — какая у него базовая личность.</li>
       <li>Базовая личность по карте — сильные стороны и уязвимые места.</li>
@@ -9261,7 +9271,8 @@ details[open] > .price-toggle-dark::after {
     <p style="font-family:'Lora',Georgia,serif; font-size:15px; font-style:italic; line-height:1.65; color:#A57A2E; margin-bottom:0; text-align:center;">Выбор профессии — один из самых важных в жизни. Карта покажет, где у ребёнка настоящий потенциал — до того, как решение принято.</p>
     <div style="width:40px; height:1px; background:rgba(165,122,46,0.35); margin:14px auto 10px;"></div>
 
-    <div class="category-label" style="text-align:center; margin-top:24px; margin-bottom:10px;">Что узнаете</div>
+    <div style="width:36px; height:1px; background:rgba(165,122,46,0.35); margin:20px auto 0;"></div>
+    <div class="category-label" style="text-align:center; font-size:13px !important; margin-top:6px; margin-bottom:12px;">Что узнаете:</div>
     <ul class="questions-list">
       <li>Какая область органична его природе по карте.</li>
       <li>Благоприятные периоды для поступления — чтобы выбрать удачный момент.</li>
@@ -9293,7 +9304,8 @@ details[open] > .price-toggle-dark::after {
     <div style="width:40px; height:1px; background:rgba(165,122,46,0.35); margin:10px auto 14px;"></div>
     <p style="font-family:'Lora',Georgia,serif; font-size:15px; font-style:italic; line-height:1.65; color:#A57A2E; margin-bottom:0; text-align:center;">Вы уже многого достигли.<br>Карта покажет — где ваш реальный потолок и что мешает взять больше.</p>
 
-    <div class="category-label" style="text-align:center; margin-top:24px; margin-bottom:10px;">Что узнаете</div>
+    <div style="width:36px; height:1px; background:rgba(165,122,46,0.35); margin:20px auto 0;"></div>
+    <div class="category-label" style="text-align:center; font-size:13px !important; margin-top:6px; margin-bottom:12px;">Что узнаете:</div>
     <ul class="questions-list">
       <li>Наёмный труд или своё дело — что органичнее вашей природе.</li>
       <li>Периоды роста и периоды, когда лучше укреплять позиции, а не рисковать.</li>
@@ -9325,7 +9337,8 @@ details[open] > .price-toggle-dark::after {
     <div style="width:40px; height:1px; background:rgba(165,122,46,0.35); margin:10px auto 14px;"></div>
     <p style="font-family:'Lora',Georgia,serif; font-size:15px; font-style:italic; line-height:1.65; color:#A57A2E; margin-bottom:0; text-align:center;">Покупка, продажа, кредит — это большие деньги и большие решения. Карта покажет, когда время подходящее — а когда лучше подождать.</p>
 
-    <div class="category-label" style="text-align:center; margin-top:24px; margin-bottom:10px;">Что узнаете</div>
+    <div style="width:36px; height:1px; background:rgba(165,122,46,0.35); margin:20px auto 0;"></div>
+    <div class="category-label" style="text-align:center; font-size:13px !important; margin-top:6px; margin-bottom:12px;">Что узнаете:</div>
     <ul class="questions-list">
       <li>Благоприятные периоды для покупки или продажи в ближайшие 2 года.</li>
       <li>Лучшее время для сделки — чтобы не войти в неудачный период.</li>
@@ -9406,7 +9419,8 @@ details[open] > .price-toggle-dark::after {
     <div style="width:40px; height:1px; background:rgba(165,122,46,0.35); margin:10px auto 14px;"></div>
     <p style="font-family:'Lora',Georgia,serif; font-size:15px; font-style:italic; line-height:1.65; color:#A57A2E; margin-bottom:0; text-align:center;">Суд — это нервы, деньги и время. Карта покажет, на чьей стороне расклад — и что можно сделать, чтобы усилить свою позицию.</p>
 
-    <div class="category-label" style="text-align:center; margin-top:24px; margin-bottom:10px;">Что узнаете</div>
+    <div style="width:36px; height:1px; background:rgba(165,122,46,0.35); margin:20px auto 0;"></div>
+    <div class="category-label" style="text-align:center; font-size:13px !important; margin-top:6px; margin-bottom:12px;">Что узнаете:</div>
     <ul class="questions-list">
       <li>Примерные сроки разбирательства — чтобы планировать, а не жить в неизвестности.</li>
       <li>Расклад сил на данный момент — на что можно опираться в вашей позиции.</li>
@@ -9438,7 +9452,8 @@ details[open] > .price-toggle-dark::after {
     <div style="width:40px; height:1px; background:rgba(165,122,46,0.35); margin:10px auto 14px;"></div>
     <p style="font-family:'Lora',Georgia,serif; font-size:15px; font-style:italic; line-height:1.65; color:#A57A2E; margin-bottom:0; text-align:center;">Карта рождения показывает слабые места в здоровье — и когда им нужно особое внимание. Не диагноз. Но предупреждение вовремя.</p>
 
-    <div class="category-label" style="text-align:center; margin-top:24px; margin-bottom:10px;">Что узнаете</div>
+    <div style="width:36px; height:1px; background:rgba(165,122,46,0.35); margin:20px auto 0;"></div>
+    <div class="category-label" style="text-align:center; font-size:13px !important; margin-top:6px; margin-bottom:12px;">Что узнаете:</div>
     <ul class="questions-list">
       <li>Как гармонизировать здоровье — через что именно вы наполняетесь силой и энергией.</li>
       <li>Самые уязвимые зоны здоровья по вашей карте.</li>
@@ -9745,7 +9760,7 @@ html body .title-accent-line {
   width: 100px !important;
   height: 14px !important;
   background: transparent !important;
-  margin: 14px auto 14px auto !important;
+  margin: 6px auto !important;
   border-radius: 0 !important;
   opacity: 1 !important;
   position: relative !important;
@@ -10564,11 +10579,11 @@ html body .intro-text {
 html body .category-label {
   font-family: 'Inter', sans-serif !important;
   font-size: 10px !important;
-  font-weight: 700 !important;
+  font-weight: 800 !important;
   letter-spacing: 2.5px !important;
   text-transform: uppercase !important;
   color: #A57A2E !important;
-  margin-top: 4px !important;
+  margin-top: 32px !important;
   margin-bottom: 4px !important;
   padding-top: 0 !important;
   border-top: none !important;
@@ -10589,7 +10604,7 @@ html body .category-sub {
   font-style: italic !important;
   color: rgba(42, 14, 38, 0.5) !important;
   letter-spacing: 0 !important;
-  margin-bottom: 12px !important;
+  margin-bottom: 20px !important;
   margin-top: 2px !important;
 }
 </style>
