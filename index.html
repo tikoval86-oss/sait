@@ -836,7 +836,7 @@ body {
     font-weight: 700;
     line-height: 1.4;
     color: var(--plum);
-    text-align: left;
+    text-align: center;
     margin-bottom: 14px;
   }
 
@@ -7019,7 +7019,8 @@ html body .faq-q-num {
   width: 38px !important;
   height: 38px !important;
   min-width: 38px !important;
-  background-color: #2A0E26 !important;
+  background: radial-gradient(circle at 30% 25%, #6B3560 0%, #2A0E26 60%, #14060F 100%) !important;
+  box-shadow: 0 4px 8px rgba(20,6,15,0.55), inset 0 1.5px 2px rgba(255,255,255,0.25), inset 0 -2px 3px rgba(0,0,0,0.35) !important;
   border-radius: 50% !important;
   color: var(--gold) !important;
   font-size: 13px !important;
@@ -7045,6 +7046,18 @@ html body .faq-a {
   color: rgba(42, 14, 38, 0.82) !important;
   font-size: 14px !important;
   line-height: 1.6 !important;
+}
+
+/* Кнопка "Задать вопрос" на странице FAQ — без обводки, с градиентом для объёма */
+html body .cta-button.faq-ask-btn {
+  border: none !important;
+  background: linear-gradient(150deg, #6B3560 0%, #2A0E26 55%, #14060F 100%) !important;
+  box-shadow: 0 6px 16px rgba(20,6,15,0.5), inset 0 1.5px 2px rgba(255,255,255,0.2), inset 0 -2px 3px rgba(0,0,0,0.3) !important;
+}
+html body .cta-button.faq-ask-btn:hover,
+html body .cta-button.faq-ask-btn:active {
+  border: none !important;
+  border-color: transparent !important;
 }
 
 /* Stats grid — отступ */
@@ -7847,7 +7860,7 @@ html body .price-card.premium .price-value {
 }
 </style>
 <style>
-/* Карточка 150€ — название и цена в столбик */
+/* Карточка 150&nbsp;€ — название и цена в столбик */
 html body .price-card:not(.premium) .price-header {
   flex-direction: column !important;
   align-items: flex-start !important;
@@ -7904,6 +7917,46 @@ html body .tariff-price {
   line-height: 1 !important;
 }
 
+/* ══ Кнопка с переливом — объёмная, компактная, с золотым бликом ══ */
+html body .cta-shine {
+  position: relative !important;
+  overflow: hidden !important;
+  width: auto !important;
+  min-width: 68% !important;
+  max-width: 280px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding: 15px 30px !important;
+  font-size: 14.5px !important;
+  border-radius: 32px !important;
+  background: linear-gradient(135deg, #2A0E26 0%, #4A2143 45%, #2A0E26 100%) !important;
+  background-size: 220% 220% !important;
+  animation: cta-shine-bg 4s ease-in-out infinite, glow-pulse 2.8s infinite ease-in-out !important;
+}
+html body .cta-shine::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -60%;
+  width: 35%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent 0%, rgba(230,184,106,0.4) 50%, transparent 100%);
+  transform: skewX(-20deg);
+  animation: cta-shine-sweep 3.4s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes cta-shine-bg {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+@keyframes cta-shine-sweep {
+  0% { left: -60%; }
+  35%, 100% { left: 130%; }
+}
+@media (max-width: 380px) {
+  html body .cta-shine { min-width: 80%; font-size: 13.5px !important; padding: 14px 22px !important; }
+}
+
 /* Кнопка "Хочу этот разбор" — без рамки, с мягким золотым свечением */
 html body .glow-button {
   border: none !important;
@@ -7918,6 +7971,48 @@ html body .glow-button:active {
 @keyframes glow-pulse {
   0%, 100% { box-shadow: 0 0 18px 3px rgba(230, 184, 106, 0.35), 0 4px 14px rgba(42, 14, 38, 0.18); }
   50% { box-shadow: 0 0 26px 7px rgba(230, 184, 106, 0.55), 0 4px 14px rgba(42, 14, 38, 0.18); }
+}
+
+/* Коучинг: цитата-интро — фирменный italic (как золотое выделение до правок) */
+html body #page-coaching .coaching-intro {
+  font-family: 'Inter', sans-serif !important;
+  font-style: italic !important;
+  font-weight: 600 !important;
+  font-size: 16px !important;
+  line-height: 1.6 !important;
+  letter-spacing: 0 !important;
+  color: rgba(42,14,38,0.9) !important;
+  text-align: center !important;
+  max-width: 300px !important;
+  margin: 0 auto 34px !important;
+  padding: 0 4px !important;
+}
+html body #page-coaching .coaching-intro span {
+  color: #A57A2E !important;
+  font-weight: 700 !important;
+}
+
+/* Кнопка на золотой заливке (тариф "Рекомендую") — лёгкий световой блик поверх, без смены фона */
+html body .gold-shine {
+  position: relative !important;
+  overflow: hidden !important;
+  animation: glow-pulse 2.8s infinite ease-in-out !important;
+}
+html body .gold-shine::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -60%;
+  width: 35%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.55) 50%, transparent 100%);
+  transform: skewX(-20deg);
+  animation: cta-shine-sweep 3.4s ease-in-out infinite;
+  pointer-events: none;
+}
+html body .gold-shine:hover,
+html body .gold-shine:active {
+  transform: translateY(-1.5px) !important;
 }
 
 /* Вертикальная компоновка info-card: иконка+заголовок в строке сверху, текст на всю ширину снизу */
@@ -8174,16 +8269,6 @@ html body .contact-sub {
       <div class="service-arrow">→</div>
     </a>
 
-    <a href="javascript:void(0)" onclick="showPage('goroskop-voprosa'); return false;" class="service-tile">
-      <div class="service-icon"><svg viewBox="0 0 60 60">
-        <circle cx="30" cy="30" r="18" fill="none" stroke-width="2"/>
-        <path d="M30 20 Q36 26 30 30 Q24 34 30 40" fill="none" stroke-width="2.5" stroke-linecap="round"/>
-        <circle class="fill-gold" cx="30" cy="44" r="2"/>
-      </svg></div>
-      <div class="service-name">Гороскоп вопроса</div>
-      <div class="service-arrow">→</div>
-    </a>
-
     <!-- ═════════ О ВАС ═════════ -->
     <div class="category-label">О вас</div>
     <div class="category-sub">Кто вы и куда движетесь.</div>
@@ -8254,7 +8339,7 @@ html body .contact-sub {
       </div>
     </a>
 
-    <a href="javascript:void(0)" onclick="showPage('format-tsen'); return false;" class="secondary-format-link" style="display:flex; align-items:center; justify-content:center; width:100%; background:transparent !important; color:#A57A2E !important; border:1.5px solid #A57A2E !important; border-radius:30px; padding:14px 20px; margin-top:20px; text-decoration:none; box-sizing:border-box; font-weight:600 !important; font-family:'Inter',sans-serif !important; font-size:13px !important; letter-spacing:0.8px !important; text-transform:uppercase !important; box-shadow:none !important;">Выбрать формат и цены →</a>
+    <a href="javascript:void(0)" onclick="showPage('format-tsen'); return false;" class="secondary-format-link" style="display:flex; align-items:center; justify-content:center; width:100%; background:#C5A059 !important; color:#2A1520 !important; border:none !important; border-radius:30px; padding:14px 20px; margin-top:20px; text-decoration:none; box-sizing:border-box; font-weight:700 !important; font-family:'Inter',sans-serif !important; font-size:13px !important; letter-spacing:0.8px !important; text-transform:uppercase !important; box-shadow:0 2px 6px rgba(42,14,38,0.15) !important;">Выбрать формат и цены →</a>
 
     <a href="javascript:void(0)" onclick="showPage('coaching'); return false;" style="display:block; text-align:center; background:#F5F1EA; border:1px solid rgba(165,122,46,0.3); border-radius:14px; padding:16px 18px; margin-top:16px; text-decoration:none;">
       <div style="font-size:13px; color:rgba(42,14,38,0.75); line-height:1.5; margin-bottom:6px;">Нужен не разовый ответ, а системная работа?</div>
@@ -8334,7 +8419,7 @@ html body .contact-sub {
         <div style="width:32px; height:1px; background:rgba(230,184,106,0.3); margin:0 auto 18px;"></div>
 
         <div style="text-align:center; font-size:11px; font-weight:600; letter-spacing:1px; text-transform:uppercase; color:rgba(230,184,106,0.6); margin-bottom:6px;">Стоимость</div>
-        <div style="text-align:center; font-family:'Lora',Georgia,serif; font-size:30px; font-weight:700; color:#E6B86A; line-height:1; margin-bottom:6px;">от 1000 €</div>
+        <div style="text-align:center; font-family:'Lora',Georgia,serif; font-size:30px; font-weight:700; color:#E6B86A; line-height:1; margin-bottom:6px;">от 1000&nbsp;€</div>
         <div style="text-align:center; font-size:13px; color:rgba(252,247,240,0.75); line-height:1.5; margin-bottom:18px;">Точная сумма зависит от количества сфер и объёма задач. Назову её после того, как вы опишете запрос.</div>
 
         <a href="https://t.me/astrolog_prognozi?text=%D0%94%D0%BE%D0%B1%D1%80%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C%21%20%D0%A3%20%D0%BC%D0%B5%D0%BD%D1%8F%20%D1%81%D0%BB%D0%BE%D0%B6%D0%BD%D1%8B%D0%B9%2C%20%D0%BD%D0%B5%D1%81%D1%82%D0%B0%D0%BD%D0%B4%D0%B0%D1%80%D1%82%D0%BD%D1%8B%D0%B9%20%D0%B7%D0%B0%D0%BF%D1%80%D0%BE%D1%81%20%E2%80%94%20%D1%85%D0%BE%D1%87%D1%83%20%D0%BE%D0%B1%D1%81%D1%83%D0%B4%D0%B8%D1%82%D1%8C%20VIP-%D1%80%D0%B0%D0%B7%D0%B1%D0%BE%D1%80%20%28%D0%B8%D0%BD%D0%B4%D0%B8%D0%B2%D0%B8%D0%B4%D1%83%D0%B0%D0%BB%D1%8C%D0%BD%D1%83%D1%8E%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%83%29" style="display:flex; align-items:center; justify-content:center; width:100%; background:#E6B86A; color:#2A0E26; border:none; border-radius:30px; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:1px; text-decoration:none; padding:14px 20px; box-sizing:border-box; box-shadow:0 6px 18px rgba(230,184,106,0.35);">Обсудить запрос</a>
@@ -8410,7 +8495,7 @@ details[open] > .price-toggle-dark::after {
 <div class="phone-container">
 
     <div class="brand-header">
-      <h1 class="main-title">Формат и цены</h1>
+      <h1 class="main-title">Форматы и цены</h1>
       <div class="title-accent-line"></div>
     </div>
 
@@ -8418,13 +8503,13 @@ details[open] > .price-toggle-dark::after {
 
     <div class="price-section">
 
-      <!-- ═════ ТАРИФ 1 — Голосовой разбор, 150€ ═════ -->
+      <!-- ═════ ТАРИФ 1 — Голосовой разбор, 150&nbsp;€ ═════ -->
       <div class="price-card" style="background:#F5F1EA; border:1px solid rgba(165,122,46,0.3); box-shadow:0 2px 12px rgba(42,14,38,0.06); padding:20px 20px;">
         <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
           <span class="tariff-num">1</span>
           <span style="font-family:'Lora',Georgia,serif !important; font-size:21px !important; font-weight:700 !important; color:#2A0E26 !important; line-height:1.3 !important; letter-spacing:0.2px !important;">Голосовой разбор</span>
         </div>
-        <div style="font-family:'Lora',Georgia,serif; font-size:32px; font-weight:700; color:#2A0E26; line-height:1; margin-bottom:12px;">150 €</div>
+        <div style="font-family:'Lora',Georgia,serif; font-size:32px; font-weight:700; color:#2A0E26; line-height:1; margin-bottom:12px;">150&nbsp;€</div>
         <div style="width:100%; height:1px; background:rgba(42,14,38,0.12); margin-bottom:12px;"></div>
         <div style="font-size:13px; color:rgba(42,14,38,0.65); line-height:1.6; margin-bottom:16px;">Слушаете в своём темпе — без созвона и обратной связи.</div>
         <a href="https://t.me/astrolog_prognozi?text=%D0%94%D0%BE%D0%B1%D1%80%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B3%D0%BE%D0%BB%D0%BE%D1%81%D0%BE%D0%B2%D0%BE%D0%B9%20%D1%80%D0%B0%D0%B7%D0%B1%D0%BE%D1%80%20%D0%B1%D0%B5%D0%B7%20%D1%81%D0%BE%D0%B7%D0%B2%D0%BE%D0%BD%D0%B0%20%28150%20%E2%82%AC%29" target="_blank" style="display:flex; align-items:center; justify-content:center; width:100%; background:transparent; color:#2A0E26; border:1.5px solid rgba(42,14,38,0.35); border-radius:24px; font-size:11.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; text-decoration:none; padding:11px 18px; box-sizing:border-box; white-space:nowrap; gap:6px; box-shadow:0 2px 6px rgba(42,14,38,0.08);">Хочу этот формат →</a>
@@ -8437,17 +8522,17 @@ details[open] > .price-toggle-dark::after {
         </details>
       </div>
 
-      <!-- ═════ ТАРИФ 2 — Разбор + коуч-сессия, 200€ ═════ -->
+      <!-- ═════ ТАРИФ 2 — Разбор + коуч-сессия, 200&nbsp;€ ═════ -->
       <div class="price-card premium" style="background:#2A1520; padding:22px 20px 20px;">
         <div class="badge">Рекомендую</div>
         <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
           <span class="tariff-num">2</span>
           <span style="font-family:'Lora',Georgia,serif !important; font-size:21px !important; font-weight:700 !important; color:rgba(230,184,106,0.7) !important; line-height:1.3 !important; letter-spacing:0.2px !important;">Разбор + коуч-сессия</span>
         </div>
-        <div style="font-family:'Lora',Georgia,serif; font-size:32px; font-weight:700; color:#E6B86A; line-height:1; margin-bottom:12px;">200 €</div>
+        <div style="font-family:'Lora',Georgia,serif; font-size:32px; font-weight:700; color:#E6B86A; line-height:1; margin-bottom:12px;">200&nbsp;€</div>
         <div style="width:100%; height:1px; background:rgba(230,184,106,0.25); margin-bottom:12px;"></div>
         <div style="font-size:13px; color:rgba(252,247,240,0.8); line-height:1.6; margin-bottom:16px;">Разбор + личный созвон 1 час — разбираем вашу ситуацию вживую.</div>
-        <a href="https://t.me/astrolog_prognozi?text=%D0%94%D0%BE%D0%B1%D1%80%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D1%8C%20%D1%80%D0%B0%D0%B7%D0%B1%D0%BE%D1%80%20%2B%20%D0%BA%D0%BE%D1%83%D1%87-%D1%81%D0%B5%D1%81%D1%81%D0%B8%D1%8E%20%28200%20%E2%82%AC%29" target="_blank" style="display:flex; align-items:center; justify-content:center; width:100%; background:#C5A059; color:#2A1520; border:none; border-radius:24px; font-size:11.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; text-decoration:none; padding:11px 18px; box-sizing:border-box; white-space:nowrap; gap:6px; box-shadow:0 2px 5px rgba(0,0,0,0.2);">Хочу этот формат →</a>
+        <a href="https://t.me/astrolog_prognozi?text=%D0%94%D0%BE%D0%B1%D1%80%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D1%8C%20%D1%80%D0%B0%D0%B7%D0%B1%D0%BE%D1%80%20%2B%20%D0%BA%D0%BE%D1%83%D1%87-%D1%81%D0%B5%D1%81%D1%81%D0%B8%D1%8E%20%28200%20%E2%82%AC%29" target="_blank" class="gold-shine" style="display:flex; align-items:center; justify-content:center; width:100%; background:#C5A059; color:#2A1520; border:none; border-radius:24px; font-size:11.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; text-decoration:none; padding:11px 18px; box-sizing:border-box; white-space:nowrap; gap:6px; box-shadow:0 2px 5px rgba(0,0,0,0.2);">Хочу этот формат →</a>
         <details>
           <summary class="price-toggle-dark">Подробнее</summary>
           <div class="price-toggle-body-dark">
@@ -8458,7 +8543,7 @@ details[open] > .price-toggle-dark::after {
         </details>
       </div>
 
-      <!-- ═════ ТАРИФ 3 — Сложные узлы судьбы (VIP), от 1000€ ═════ -->
+      <!-- ═════ ТАРИФ 3 — Сложные узлы судьбы (VIP), от 1000&nbsp;€ ═════ -->
       <div class="price-card premium" style="background:#161113; padding:24px 20px 20px; box-shadow:0 4px 16px rgba(0,0,0,0.4), 0 0 0 4px #F5F1EA, 0 0 0 5px rgba(230,184,106,0.4), inset 0 0 0 1px rgba(230,184,106,0.25); position:relative; margin-top:6px;">
         <div class="badge" style="display:flex; align-items:center; gap:5px; padding:4px 14px 4px 10px;">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -8470,7 +8555,7 @@ details[open] > .price-toggle-dark::after {
           <span class="tariff-num">3</span>
           <span style="font-family:'Lora',Georgia,serif !important; font-size:21px !important; font-weight:700 !important; color:rgba(230,184,106,0.7) !important; line-height:1.3 !important; letter-spacing:0.2px !important;">Сложные узлы судьбы</span>
         </div>
-        <div style="font-family:'Lora',Georgia,serif; font-size:32px; font-weight:700; color:#E6B86A; line-height:1; margin-bottom:12px;">от 1000 €</div>
+        <div style="font-family:'Lora',Georgia,serif; font-size:32px; font-weight:700; color:#E6B86A; line-height:1; margin-bottom:12px;">от 1000&nbsp;€</div>
         <div style="width:100%; height:1px; background:rgba(230,184,106,0.2); margin-bottom:12px;"></div>
         <div style="font-size:13px; color:rgba(252,247,240,0.7); line-height:1.6; margin-bottom:16px;">Когда несколько процессов идут одновременно — развод, переезд, суд, недвижимость.</div>
         <a href="javascript:void(0)" onclick="showPage('individualnaya'); return false;" style="display:flex; align-items:center; justify-content:center; width:100%; background:transparent; color:#E6B86A; border:1.5px solid #E6B86A; border-radius:24px; font-size:11.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; text-decoration:none; padding:11px 18px; box-sizing:border-box; white-space:nowrap; gap:6px;">Обсудить запрос →</a>
@@ -8486,7 +8571,7 @@ details[open] > .price-toggle-dark::after {
 
     </div>
 
-    <div style="font-size:11.5px; color:rgba(42,14,38,0.4); text-align:center; margin-top:8px; line-height:1.5;">Исключения по цене: «Гороскоп вопроса» и «Благоприятная дата» — см. их карточки.</div>
+    <div style="font-size:11.5px; color:rgba(42,14,38,0.4); text-align:center; margin-top:8px; line-height:1.5;">Исключение по цене: «Благоприятная дата» — см. её карточку.</div>
 
     <div style="background:#F5F1EA; border:1px solid rgba(165,122,46,0.25); border-radius:16px; padding:20px 20px 18px; margin-top:22px; text-align:left;">
       <div style="display:flex; align-items:center; gap:10px; margin-bottom:20px;">
@@ -8519,7 +8604,7 @@ details[open] > .price-toggle-dark::after {
       <p style="font-size:13px; color:rgba(42,14,38,0.5); line-height:1.6; margin:0; padding-top:14px; border-top:1px solid rgba(165,122,46,0.2);">Не знаете точное время рождения? <a href="javascript:void(0)" onclick="showPage('rektifikaciya'); return false;" style="color:#A57A2E; text-decoration:none; font-weight:600;">Узнать о ректификации →</a></p>
     </div>
 
-    <a href="javascript:void(0)" onclick="showPage('razbory'); return false;" style="display:block; text-align:center; margin-top:28px; font-size:13px; color:#A57A2E; text-decoration:underline;">← Назад к выбору темы</a>
+    <a href="javascript:void(0)" onclick="showPage('razbory'); setTimeout(function(){ var el=document.getElementById('category-start'); if(el){ el.scrollIntoView({block:'start'}); } }, 60); return false;" style="display:block; font-family:'Lora',Georgia,serif; font-size:14px; font-style:italic; color:#A57A2E; text-align:center; margin-top:28px; text-decoration:none;">← Выбор разбора</a>
 
   </div>
 </div>
@@ -8536,13 +8621,13 @@ details[open] > .price-toggle-dark::after {
 
     <div class="price-section">
 
-      <!-- ═════ ТАРИФ 1 — Разовая, 100€ ═════ -->
+      <!-- ═════ ТАРИФ 1 — Разовая, 100&nbsp;€ ═════ -->
       <div class="price-card" style="background:#F5F1EA; border:1px solid rgba(158,116,50,0.25); box-shadow:0 2px 12px rgba(42,14,38,0.06); padding:20px 20px;">
         <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
           <span class="tariff-num">1</span>
           <span style="font-family:'Lora',Georgia,serif !important; font-size:21px !important; font-weight:700 !important; color:#2A0E26 !important; line-height:1.3 !important; letter-spacing:0.2px !important;">Разовая сессия</span>
         </div>
-        <div style="font-family:'Lora',Georgia,serif; font-size:32px; font-weight:700; color:#2A0E26; line-height:1; margin-bottom:12px;">100 €</div>
+        <div style="font-family:'Lora',Georgia,serif; font-size:32px; font-weight:700; color:#2A0E26; line-height:1; margin-bottom:12px;">100&nbsp;€</div>
         <div style="width:100%; height:1px; background:rgba(42,14,38,0.12); margin-bottom:12px;"></div>
         <div style="font-size:13px; color:rgba(42,14,38,0.65); line-height:1.6; margin-bottom:16px;">Один час — чтобы остановиться, увидеть ситуацию со стороны и понять следующий шаг.</div>
         <a href="https://t.me/astrolog_prognozi?text=%D0%94%D0%BE%D0%B1%D1%80%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%D1%81%D1%8F%20%D0%BD%D0%B0%20%D1%80%D0%B0%D0%B7%D0%BE%D0%B2%D1%83%D1%8E%20%D0%BA%D0%BE%D1%83%D1%87-%D1%81%D0%B5%D1%81%D1%81%D0%B8%D1%8E" target="_blank" style="display:flex; align-items:center; justify-content:center; width:100%; background:transparent; color:#2A0E26; border:1.5px solid rgba(42,14,38,0.35); border-radius:24px; font-size:11.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; text-decoration:none; padding:11px 18px; box-sizing:border-box; white-space:nowrap; gap:6px; box-shadow:0 2px 6px rgba(42,14,38,0.08);">Хочу этот формат →</a>
@@ -8563,18 +8648,18 @@ details[open] > .price-toggle-dark::after {
         </details>
       </div>
 
-      <!-- ═════ ТАРИФ 2 — Пакет 5 сессий, 400€ ═════ -->
+      <!-- ═════ ТАРИФ 2 — Пакет 5 сессий, 400&nbsp;€ ═════ -->
       <div class="price-card premium" style="background:#2A1520; padding:22px 20px 20px;">
         <div class="badge">Рекомендую</div>
         <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
           <span class="tariff-num">2</span>
           <span style="font-family:'Lora',Georgia,serif !important; font-size:21px !important; font-weight:700 !important; color:rgba(230,184,106,0.7) !important; line-height:1.3 !important; letter-spacing:0.2px !important;">Интенсивный запуск</span>
         </div>
-        <div style="font-family:'Lora',Georgia,serif; font-size:32px; font-weight:700; color:#E6B86A; line-height:1; margin-bottom:12px;">400 €</div>
+        <div style="font-family:'Lora',Georgia,serif; font-size:32px; font-weight:700; color:#E6B86A; line-height:1; margin-bottom:12px;">400&nbsp;€</div>
         <div style="width:100%; height:1px; background:rgba(230,184,106,0.25); margin-bottom:12px;"></div>
         <div style="font-size:10.5px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:rgba(230,184,106,0.6); margin-bottom:10px;">5 коуч-сессий · раз в неделю</div>
         <div style="font-size:13px; color:rgba(252,247,240,0.8); line-height:1.6; margin-bottom:16px;">Пять недель — чтобы понять, куда вы хотите, и начать двигаться туда осознанно.</div>
-        <a href="https://t.me/astrolog_prognozi?text=%D0%94%D0%BE%D0%B1%D1%80%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B2%D0%B7%D1%8F%D1%82%D1%8C%20%D0%BF%D0%B0%D0%BA%D0%B5%D1%82%20%C2%AB%D0%98%D0%BD%D1%82%D0%B5%D0%BD%D1%81%D0%B8%D0%B2%D0%BD%D1%8B%D0%B9%20%D0%B7%D0%B0%D0%BF%D1%83%D1%81%D0%BA%C2%BB%20%285%20%D0%BA%D0%BE%D1%83%D1%87-%D1%81%D0%B5%D1%81%D1%81%D0%B8%D0%B9%29" target="_blank" style="display:flex; align-items:center; justify-content:center; width:100%; background:#C5A059; color:#2A1520; border:none; border-radius:24px; font-size:11.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; text-decoration:none; padding:11px 18px; box-sizing:border-box; white-space:nowrap; gap:6px; box-shadow:0 2px 5px rgba(0,0,0,0.2);">Зову в работу →</a>
+        <a href="https://t.me/astrolog_prognozi?text=%D0%94%D0%BE%D0%B1%D1%80%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B2%D0%B7%D1%8F%D1%82%D1%8C%20%D0%BF%D0%B0%D0%BA%D0%B5%D1%82%20%C2%AB%D0%98%D0%BD%D1%82%D0%B5%D0%BD%D1%81%D0%B8%D0%B2%D0%BD%D1%8B%D0%B9%20%D0%B7%D0%B0%D0%BF%D1%83%D1%81%D0%BA%C2%BB%20%285%20%D0%BA%D0%BE%D1%83%D1%87-%D1%81%D0%B5%D1%81%D1%81%D0%B8%D0%B9%29" target="_blank" class="gold-shine" style="display:flex; align-items:center; justify-content:center; width:100%; background:#C5A059; color:#2A1520; border:none; border-radius:24px; font-size:11.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; text-decoration:none; padding:11px 18px; box-sizing:border-box; white-space:nowrap; gap:6px; box-shadow:0 2px 5px rgba(0,0,0,0.2);">Зову в работу →</a>
         <details>
           <summary class="price-toggle-dark">Подробнее</summary>
           <div class="price-toggle-body-dark">
@@ -8592,7 +8677,7 @@ details[open] > .price-toggle-dark::after {
         </details>
       </div>
 
-      <!-- ═════ ТАРИФ 3 — Пакет 10 сессий (VIP), 700€ ═════ -->
+      <!-- ═════ ТАРИФ 3 — Пакет 10 сессий (VIP), 700&nbsp;€ ═════ -->
       <div class="price-card premium" style="background:#161113; padding:24px 20px 20px; box-shadow:0 4px 16px rgba(0,0,0,0.4), 0 0 0 4px #F5F1EA, 0 0 0 5px rgba(230,184,106,0.4), inset 0 0 0 1px rgba(230,184,106,0.25); position:relative; margin-top:6px;">
         <div class="badge" style="display:flex; align-items:center; gap:5px; padding:4px 14px 4px 10px;">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -8604,7 +8689,7 @@ details[open] > .price-toggle-dark::after {
           <span class="tariff-num">3</span>
           <span style="font-family:'Lora',Georgia,serif !important; font-size:21px !important; font-weight:700 !important; color:rgba(230,184,106,0.7) !important; line-height:1.3 !important; letter-spacing:0.2px !important;">Глубокая трансформация</span>
         </div>
-        <div style="font-family:'Lora',Georgia,serif; font-size:32px; font-weight:700; color:#E6B86A; line-height:1; margin-bottom:12px;">700 €</div>
+        <div style="font-family:'Lora',Georgia,serif; font-size:32px; font-weight:700; color:#E6B86A; line-height:1; margin-bottom:12px;">700&nbsp;€</div>
         <div style="width:100%; height:1px; background:rgba(230,184,106,0.2); margin-bottom:12px;"></div>
         <div style="font-size:10.5px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:rgba(230,184,106,0.55); margin-bottom:10px;">10 коуч-сессий · 2-3 месяца</div>
         <div style="font-size:13px; color:rgba(252,247,240,0.7); line-height:1.6; margin-bottom:16px;">Два-три месяца серьёзной работы — не курс и не марафон. Реальное движение.</div>
@@ -8713,9 +8798,9 @@ details[open] > .price-toggle-dark::after {
     <details class="faq-item">
       <summary><span class="faq-q-num">02</span><span>В чём разница между разбором одной сферы, годовым разбором и индивидуальной работой?</span></summary>
       <div class="faq-a">
-        <strong>Разбор одной сферы</strong> (150–200 €) — это не «облегчённая» версия чего-то, а самостоятельное глубокое исследование именно этой темы. Для личной жизни — детальный анализ Венеры и вашего партнёрского потенциала. Для карьеры и денег — отдельное погружение в финансовую сферу карты. Каждая тема разбирается до конца.<br><br>
-        <strong>Годовой разбор</strong> (от 150 €) — фокус на конкретный год: ключевые события и периоды по месяцам, сразу по нескольким сферам, но в рамках этого временного отрезка. Если в этом году, например, переезда не видно — я так и скажу: «в этом году переезда нет», без прогноза, когда он случится.<br><br>
-        <strong>Индивидуальная работа</strong> (от 1000 €) — другое измерение: стратегия сразу по нескольким сферам вместе, с горизонтом до 3 лет вперёд. Здесь я уже скажу конкретнее: «сейчас нет, но через два года у вас будет переезд» — потому что берётся не один год, а весь трёхлетний период сразу.<br><br>
+        <strong>Разбор одной сферы</strong> (150–200&nbsp;€) — это не «облегчённая» версия чего-то, а самостоятельное глубокое исследование именно этой темы. Для личной жизни — детальный анализ Венеры и вашего партнёрского потенциала. Для карьеры и денег — отдельное погружение в финансовую сферу карты. Каждая тема разбирается до конца.<br><br>
+        <strong>Годовой разбор</strong> (от 150&nbsp;€) — фокус на конкретный год: ключевые события и периоды по месяцам, сразу по нескольким сферам, но в рамках этого временного отрезка. Если в этом году, например, переезда не видно — я так и скажу: «в этом году переезда нет», без прогноза, когда он случится.<br><br>
+        <strong>Индивидуальная работа</strong> (от 1000&nbsp;€) — другое измерение: стратегия сразу по нескольким сферам вместе, с горизонтом до 3 лет вперёд. Здесь я уже скажу конкретнее: «сейчас нет, но через два года у вас будет переезд» — потому что берётся не один год, а весь трёхлетний период сразу.<br><br>
         Каждый формат ценен по-своему — вопрос не «что глубже», а какая у вас сейчас задача.
       </div>
     </details>
@@ -8777,7 +8862,7 @@ details[open] > .price-toggle-dark::after {
       <summary><span class="faq-q-num">09</span><span>Почему разбор стоит именно столько?</span></summary>
       <div class="faq-a">
         Я работаю с каждой картой лично — без шаблонов и автоматических генераторов. На один разбор уходит несколько часов: построение карты, расчёт периодов, формулировка выводов так, чтобы вы получили конкретный ответ, а не общие фразы.<br><br>
-        Цена отражает глубину работы и мой многолетний опыт, а не количество минут на созвоне. Если для вашей задачи достаточно более короткого формата — посмотрите «Гороскоп вопроса» или «Благоприятную дату», они стоят меньше.
+        Цена отражает глубину работы и мой многолетний опыт, а не количество минут на созвоне. Если для вашей задачи достаточно более короткого формата — посмотрите «Благоприятную дату», она стоит меньше.
       </div>
     </details>
 
@@ -8796,7 +8881,7 @@ details[open] > .price-toggle-dark::after {
     <div class="final-cta-text">
       Остался вопрос? Напишите в Telegram — отвечу лично, без скриптов.
     </div>
-    <a href="https://t.me/astrolog_prognozi" class="cta-button">Задать вопрос</a>
+    <a href="https://t.me/astrolog_prognozi" class="cta-button faq-ask-btn">Задать вопрос</a>
   </div>
 </div>
 
@@ -8958,7 +9043,6 @@ details[open] > .price-toggle-dark::after {
 <div class="page" id="page-astroportret">
 <div class="phone-container">
 
-    <!-- ЗАМЕНИТЬ НА ДРУГИХ ЛЕНДИНГАХ: название услуги -->
     <div class="brand-header" style="margin-bottom:10px;">
       <div style="font-size:10px; font-weight:600; letter-spacing:2.5px; text-transform:uppercase; color:#A57A2E; margin-bottom:10px;">ДЛЯ ТЕХ, КТО ХОЧЕТ ПОНЯТЬ СЕБЯ</div>
       <h1 class="main-title">Астропортрет</h1>
@@ -8968,7 +9052,6 @@ details[open] > .price-toggle-dark::after {
     <div style="width:40px; height:1px; background:rgba(165,122,46,0.35); margin:10px auto 14px;"></div>
     <p style="font-family:'Lora',Georgia,serif; font-size:15px; font-style:italic; line-height:1.65; color:#A57A2E; margin-bottom:0; text-align:center;">Карта рождения — это не гороскоп из журнала. Это описание вашей личности: что даётся легко, что мешает и на что вы на самом деле способны.</p>
 
-    <!-- ЗАМЕНИТЬ НА ДРУГИХ ЛЕНДИНГАХ: список вопросов под услугу -->
     <div class="category-label" style="text-align:center; margin-top:24px; margin-bottom:10px;">Что узнаете</div>
     <ul class="questions-list">
       <li>Ваши сильные стороны по карте — то, на что можно опираться.</li>
@@ -8979,13 +9062,13 @@ details[open] > .price-toggle-dark::after {
     </ul>
 
     <div style="text-align:center; margin-top:22px; margin-bottom:4px;">
-      <span style="font-size:12px; font-weight:600; color:#A57A2E;">Формат</span>
+      <span style="font-size:12px; font-weight:600; color:#A57A2E;">Стоимость</span>
       <span style="font-family:'Lora',Georgia,serif; font-size:17px; font-weight:700; color:#2A0E26;"> 200&nbsp;€</span>
-      <span style="font-size:13px; color:rgba(42,14,38,0.55);"> (разбор + созвон)</span>
-      <div style="font-size:10.5px; color:rgba(42,14,38,0.4); margin-top:3px;">Есть разбор за 150&nbsp;€ без обратной связи · <a href="javascript:void(0)" onclick="showPage('format-tsen'); return false;" style="color:#A57A2E; text-decoration:underline;">Форматы и цены →</a></div>
+      <span style="font-family:'Lora',Georgia,serif; font-size:13px; font-style:italic; color:rgba(42,14,38,0.55);"> (разбор + созвон)</span>
+      <div style="font-size:10.5px; letter-spacing:0.3px; margin-top:10px; padding-top:10px; border-top:1px solid rgba(165,122,46,0.18);"><a href="javascript:void(0)" onclick="showPage('format-tsen'); return false;" style="color:#A57A2E; text-decoration:none; font-weight:600; border-bottom:1px solid rgba(165,122,46,0.45); padding-bottom:1px;">Форматы и цены →</a></div>
     </div>
 
-    <a href="https://t.me/astrolog_prognozi?text=%D0%94%D0%BE%D0%B1%D1%80%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%80%D0%B0%D0%B7%D0%B1%D0%BE%D1%80%20%C2%AB%D0%90%D1%81%D1%82%D1%80%D0%BE%D0%BF%D0%BE%D1%80%D1%82%D1%80%D0%B5%D1%82%C2%BB" class="card-button glow-button" style="display:block; text-align:center; margin-top:12px;">Хочу этот разбор</a>
+    <a href="https://t.me/astrolog_prognozi?text=%D0%94%D0%BE%D0%B1%D1%80%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%80%D0%B0%D0%B7%D0%B1%D0%BE%D1%80%20%C2%AB%D0%90%D1%81%D1%82%D1%80%D0%BE%D0%BF%D0%BE%D1%80%D1%82%D1%80%D0%B5%D1%82%C2%BB" class="card-button glow-button cta-shine" style="display:block; text-align:center; margin-top:12px;">Хочу этот разбор</a>
 
   </div>
 </div>
@@ -8993,7 +9076,6 @@ details[open] > .price-toggle-dark::after {
 <div class="page" id="page-put-dushi">
 <div class="phone-container">
 
-    <!-- ЗАМЕНИТЬ НА ДРУГИХ ЛЕНДИНГАХ: название услуги -->
     <div class="brand-header" style="margin-bottom:10px;">
       <div style="font-size:10px; font-weight:600; letter-spacing:2.5px; text-transform:uppercase; color:#A57A2E; margin-bottom:10px;">ДЛЯ ТЕХ, КТО ИЩЕТ СМЫСЛ</div>
       <h1 class="main-title">Путь души</h1>
@@ -9003,7 +9085,6 @@ details[open] > .price-toggle-dark::after {
     <div style="width:40px; height:1px; background:rgba(165,122,46,0.35); margin:10px auto 14px;"></div>
     <p style="font-family:'Lora',Georgia,serif; font-size:15px; font-style:italic; line-height:1.65; color:#A57A2E; margin-bottom:0; text-align:center;">Есть всё — но ощущение, что живёте не своей жизнью.<br>Карта рождения объяснит почему.</p>
 
-    <!-- ЗАМЕНИТЬ НА ДРУГИХ ЛЕНДИНГАХ: список вопросов под услугу -->
     <div class="category-label" style="text-align:center; margin-top:24px; margin-bottom:10px;">Что узнаете</div>
     <ul class="questions-list">
       <li>Почему вы здесь — какая у вас задача в этой жизни.</li>
@@ -9013,13 +9094,13 @@ details[open] > .price-toggle-dark::after {
     </ul>
 
     <div style="text-align:center; margin-top:22px; margin-bottom:4px;">
-      <span style="font-size:12px; font-weight:600; color:#A57A2E;">Формат</span>
+      <span style="font-size:12px; font-weight:600; color:#A57A2E;">Стоимость</span>
       <span style="font-family:'Lora',Georgia,serif; font-size:17px; font-weight:700; color:#2A0E26;"> 200&nbsp;€</span>
-      <span style="font-size:13px; color:rgba(42,14,38,0.55);"> (разбор + созвон)</span>
-      <div style="font-size:10.5px; color:rgba(42,14,38,0.4); margin-top:3px;">Есть разбор за 150&nbsp;€ без обратной связи · <a href="javascript:void(0)" onclick="showPage('format-tsen'); return false;" style="color:#A57A2E; text-decoration:underline;">Форматы и цены →</a></div>
+      <span style="font-family:'Lora',Georgia,serif; font-size:13px; font-style:italic; color:rgba(42,14,38,0.55);"> (разбор + созвон)</span>
+      <div style="font-size:10.5px; letter-spacing:0.3px; margin-top:10px; padding-top:10px; border-top:1px solid rgba(165,122,46,0.18);"><a href="javascript:void(0)" onclick="showPage('format-tsen'); return false;" style="color:#A57A2E; text-decoration:none; font-weight:600; border-bottom:1px solid rgba(165,122,46,0.45); padding-bottom:1px;">Форматы и цены →</a></div>
     </div>
 
-    <a href="https://t.me/astrolog_prognozi?text=%D0%94%D0%BE%D0%B1%D1%80%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%80%D0%B0%D0%B7%D0%B1%D0%BE%D1%80%20%C2%AB%D0%9F%D1%83%D1%82%D1%8C%20%D0%B4%D1%83%D1%88%D0%B8%C2%BB" class="card-button glow-button" style="display:block; text-align:center; margin-top:12px;">Хочу этот разбор</a>
+    <a href="https://t.me/astrolog_prognozi?text=%D0%94%D0%BE%D0%B1%D1%80%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%80%D0%B0%D0%B7%D0%B1%D0%BE%D1%80%20%C2%AB%D0%9F%D1%83%D1%82%D1%8C%20%D0%B4%D1%83%D1%88%D0%B8%C2%BB" class="card-button glow-button cta-shine" style="display:block; text-align:center; margin-top:12px;">Хочу этот разбор</a>
 
   </div>
 </div>
@@ -9045,13 +9126,13 @@ details[open] > .price-toggle-dark::after {
     </ul>
 
     <div style="text-align:center; margin-top:22px; margin-bottom:4px;">
-      <span style="font-size:12px; font-weight:600; color:#A57A2E;">Формат</span>
+      <span style="font-size:12px; font-weight:600; color:#A57A2E;">Стоимость</span>
       <span style="font-family:'Lora',Georgia,serif; font-size:17px; font-weight:700; color:#2A0E26;"> 200&nbsp;€</span>
-      <span style="font-size:13px; color:rgba(42,14,38,0.55);"> (разбор + созвон)</span>
-      <div style="font-size:10.5px; color:rgba(42,14,38,0.4); margin-top:3px;">Есть разбор за 150&nbsp;€ без обратной связи · <a href="javascript:void(0)" onclick="showPage('format-tsen'); return false;" style="color:#A57A2E; text-decoration:underline;">Форматы и цены →</a></div>
+      <span style="font-family:'Lora',Georgia,serif; font-size:13px; font-style:italic; color:rgba(42,14,38,0.55);"> (разбор + созвон)</span>
+      <div style="font-size:10.5px; letter-spacing:0.3px; margin-top:10px; padding-top:10px; border-top:1px solid rgba(165,122,46,0.18);"><a href="javascript:void(0)" onclick="showPage('format-tsen'); return false;" style="color:#A57A2E; text-decoration:none; font-weight:600; border-bottom:1px solid rgba(165,122,46,0.45); padding-bottom:1px;">Форматы и цены →</a></div>
     </div>
 
-    <a href="https://t.me/astrolog_prognozi?text=%D0%94%D0%BE%D0%B1%D1%80%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%80%D0%B0%D0%B7%D0%B1%D0%BE%D1%80%20%C2%AB%D0%9A%D0%BE%D1%80%D0%BE%D0%BB%D0%B5%D0%B2%D1%81%D0%BA%D0%B8%D0%B5%20%D0%B7%D0%B2%D1%91%D0%B7%D0%B4%D1%8B%C2%BB" class="card-button glow-button" style="display:block; text-align:center; margin-top:12px;">Хочу этот разбор</a>
+    <a href="https://t.me/astrolog_prognozi?text=%D0%94%D0%BE%D0%B1%D1%80%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%80%D0%B0%D0%B7%D0%B1%D0%BE%D1%80%20%C2%AB%D0%9A%D0%BE%D1%80%D0%BE%D0%BB%D0%B5%D0%B2%D1%81%D0%BA%D0%B8%D0%B5%20%D0%B7%D0%B2%D1%91%D0%B7%D0%B4%D1%8B%C2%BB" class="card-button glow-button cta-shine" style="display:block; text-align:center; margin-top:12px;">Хочу этот разбор</a>
 
   </div>
 </div>
@@ -9059,7 +9140,6 @@ details[open] > .price-toggle-dark::after {
 <div class="page" id="page-goroskop-na-god">
 <div class="phone-container">
 
-    <!-- ЗАМЕНИТЬ НА ДРУГИХ ЛЕНДИНГАХ: название услуги -->
     <div class="brand-header" style="margin-bottom:10px;">
       <div style="font-size:10px; font-weight:600; letter-spacing:2.5px; text-transform:uppercase; color:#A57A2E; margin-bottom:10px;">ВАШ ГОД — ПО КАРТЕ РОЖДЕНИЯ</div>
       <h1 class="main-title">Годовой разбор</h1>
@@ -9069,7 +9149,6 @@ details[open] > .price-toggle-dark::after {
     <div style="width:40px; height:1px; background:rgba(165,122,46,0.35); margin:10px auto 14px;"></div>
     <p style="font-family:'Lora',Georgia,serif; font-size:15px; font-style:italic; line-height:1.65; color:#A57A2E; margin-bottom:0; text-align:center;">Не общий гороскоп. Ваш личный — с датами, периодами и конкретными сферами жизни.</p>
 
-    <!-- ЗАМЕНИТЬ НА ДРУГИХ ЛЕНДИНГАХ: список вопросов под услугу -->
     <div class="category-label" style="text-align:center; margin-top:24px; margin-bottom:10px;">Что узнаете</div>
     <ul class="questions-list">
       <li>Самые важные окна года — и примерные сроки, когда они открываются.</li>
@@ -9081,13 +9160,13 @@ details[open] > .price-toggle-dark::after {
     <p style="font-size:13px; color:rgba(42,14,38,0.65); line-height:1.5; text-align:center; margin-top:16px; font-style:italic;">Этот разбор даёт полную картину года — по месяцам, по всем ключевым сферам сразу. Если же у вас прямо сейчас пересекается сразу несколько больших задач (например, переезд, новые отношения и поступление детей) — для такого есть отдельный, более глубокий формат: <a href="javascript:void(0)" onclick="showPage('individualnaya'); return false;" style="color:#A57A2E; text-decoration:underline; font-style:normal;">Индивидуальная работа</a>.</p>
 
     <div style="text-align:center; margin-top:22px; margin-bottom:4px;">
-      <span style="font-size:12px; font-weight:600; color:#A57A2E;">Формат</span>
+      <span style="font-size:12px; font-weight:600; color:#A57A2E;">Стоимость</span>
       <span style="font-family:'Lora',Georgia,serif; font-size:17px; font-weight:700; color:#2A0E26;"> 200&nbsp;€</span>
-      <span style="font-size:13px; color:rgba(42,14,38,0.55);"> (разбор + созвон)</span>
-      <div style="font-size:10.5px; color:rgba(42,14,38,0.4); margin-top:3px;">Есть разбор за 150&nbsp;€ без обратной связи · <a href="javascript:void(0)" onclick="showPage('format-tsen'); return false;" style="color:#A57A2E; text-decoration:underline;">Форматы и цены →</a></div>
+      <span style="font-family:'Lora',Georgia,serif; font-size:13px; font-style:italic; color:rgba(42,14,38,0.55);"> (разбор + созвон)</span>
+      <div style="font-size:10.5px; letter-spacing:0.3px; margin-top:10px; padding-top:10px; border-top:1px solid rgba(165,122,46,0.18);"><a href="javascript:void(0)" onclick="showPage('format-tsen'); return false;" style="color:#A57A2E; text-decoration:none; font-weight:600; border-bottom:1px solid rgba(165,122,46,0.45); padding-bottom:1px;">Форматы и цены →</a></div>
     </div>
 
-    <a href="https://t.me/astrolog_prognozi?text=%D0%94%D0%BE%D0%B1%D1%80%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%80%D0%B0%D0%B7%D0%B1%D0%BE%D1%80%20%C2%AB%D0%93%D0%BE%D0%B4%D0%BE%D0%B2%D0%BE%D0%B9%20%D1%80%D0%B0%D0%B7%D0%B1%D0%BE%D1%80%C2%BB" class="card-button glow-button" style="display:block; text-align:center; margin-top:12px;">Хочу этот разбор</a>
+    <a href="https://t.me/astrolog_prognozi?text=%D0%94%D0%BE%D0%B1%D1%80%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%80%D0%B0%D0%B7%D0%B1%D0%BE%D1%80%20%C2%AB%D0%93%D0%BE%D0%B4%D0%BE%D0%B2%D0%BE%D0%B9%20%D1%80%D0%B0%D0%B7%D0%B1%D0%BE%D1%80%C2%BB" class="card-button glow-button cta-shine" style="display:block; text-align:center; margin-top:12px;">Хочу этот разбор</a>
 
   </div>
 </div>
@@ -9095,7 +9174,6 @@ details[open] > .price-toggle-dark::after {
 <div class="page" id="page-lichnaya-zhizn">
 <div class="phone-container">
 
-    <!-- ЗАМЕНИТЬ НА ДРУГИХ ЛЕНДИНГАХ: название услуги -->
     <div class="brand-header" style="margin-bottom:10px;">
       <div style="font-size:10px; font-weight:600; letter-spacing:2.5px; text-transform:uppercase; color:#A57A2E; margin-bottom:10px;">ДЛЯ ТЕХ, КТО УСТАЛ ЖДАТЬ И УГАДЫВАТЬ</div>
       <h1 class="main-title">Личная жизнь</h1>
@@ -9105,7 +9183,6 @@ details[open] > .price-toggle-dark::after {
     <div style="width:40px; height:1px; background:rgba(165,122,46,0.35); margin:10px auto 14px;"></div>
     <p style="font-family:'Lora',Georgia,serif; font-size:15px; font-style:italic; line-height:1.65; color:#A57A2E; margin-bottom:0; text-align:center;">Вы умная, состоявшаяся, самодостаточная. И при этом в личной жизни — повторяется один и тот же сценарий. Карта объяснит почему — и покажет, когда это изменится.</p>
 
-    <!-- ЗАМЕНИТЬ НА ДРУГИХ ЛЕНДИНГАХ: список вопросов под услугу -->
     <div class="category-label" style="text-align:center; margin-top:24px; margin-bottom:10px;">Что узнаете</div>
     <ul class="questions-list">
       <li>Какой тип партнёра органичен вам по карте — и как его узнавать в реальности, а не додумывать.</li>
@@ -9115,13 +9192,13 @@ details[open] > .price-toggle-dark::after {
     </ul>
 
     <div style="text-align:center; margin-top:22px; margin-bottom:4px;">
-      <span style="font-size:12px; font-weight:600; color:#A57A2E;">Формат</span>
+      <span style="font-size:12px; font-weight:600; color:#A57A2E;">Стоимость</span>
       <span style="font-family:'Lora',Georgia,serif; font-size:17px; font-weight:700; color:#2A0E26;"> 200&nbsp;€</span>
-      <span style="font-size:13px; color:rgba(42,14,38,0.55);"> (разбор + созвон)</span>
-      <div style="font-size:10.5px; color:rgba(42,14,38,0.4); margin-top:3px;">Есть разбор за 150&nbsp;€ без обратной связи · <a href="javascript:void(0)" onclick="showPage('format-tsen'); return false;" style="color:#A57A2E; text-decoration:underline;">Форматы и цены →</a></div>
+      <span style="font-family:'Lora',Georgia,serif; font-size:13px; font-style:italic; color:rgba(42,14,38,0.55);"> (разбор + созвон)</span>
+      <div style="font-size:10.5px; letter-spacing:0.3px; margin-top:10px; padding-top:10px; border-top:1px solid rgba(165,122,46,0.18);"><a href="javascript:void(0)" onclick="showPage('format-tsen'); return false;" style="color:#A57A2E; text-decoration:none; font-weight:600; border-bottom:1px solid rgba(165,122,46,0.45); padding-bottom:1px;">Форматы и цены →</a></div>
     </div>
 
-    <a href="https://t.me/astrolog_prognozi?text=%D0%94%D0%BE%D0%B1%D1%80%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%80%D0%B0%D0%B7%D0%B1%D0%BE%D1%80%20%C2%AB%D0%9B%D0%B8%D1%87%D0%BD%D0%B0%D1%8F%20%D0%B6%D0%B8%D0%B7%D0%BD%D1%8C%C2%BB" class="card-button glow-button" style="display:block; text-align:center; margin-top:12px;">Хочу этот разбор</a>
+    <a href="https://t.me/astrolog_prognozi?text=%D0%94%D0%BE%D0%B1%D1%80%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%80%D0%B0%D0%B7%D0%B1%D0%BE%D1%80%20%C2%AB%D0%9B%D0%B8%D1%87%D0%BD%D0%B0%D1%8F%20%D0%B6%D0%B8%D0%B7%D0%BD%D1%8C%C2%BB" class="card-button glow-button cta-shine" style="display:block; text-align:center; margin-top:12px;">Хочу этот разбор</a>
 
   </div>
 </div>
@@ -9129,7 +9206,6 @@ details[open] > .price-toggle-dark::after {
 <div class="page" id="page-sovmestimost">
 <div class="phone-container">
 
-    <!-- ЗАМЕНИТЬ НА ДРУГИХ ЛЕНДИНГАХ: название услуги -->
     <div class="brand-header" style="margin-bottom:10px;">
       <div style="font-size:10px; font-weight:600; letter-spacing:2.5px; text-transform:uppercase; color:#A57A2E; margin-bottom:10px;">ДЛЯ ТЕХ, КТО ДУМАЕТ — ОН ЛИ ЭТО</div>
       <h1 class="main-title">Совместимость</h1>
@@ -9139,7 +9215,6 @@ details[open] > .price-toggle-dark::after {
     <div style="width:40px; height:1px; background:rgba(165,122,46,0.35); margin:10px auto 14px;"></div>
     <p style="font-family:'Lora',Georgia,serif; font-size:15px; font-style:italic; line-height:1.65; color:#A57A2E; margin-bottom:0; text-align:center;">Прежде чем вкладывать годы и чувства — стоит понять, кто он на самом деле. Карта скажет честно.</p>
 
-    <!-- ЗАМЕНИТЬ НА ДРУГИХ ЛЕНДИНГАХ: список вопросов под услугу -->
     <div class="category-label" style="text-align:center; margin-top:24px; margin-bottom:10px;">Что узнаете</div>
     <ul class="questions-list">
       <li>Кто он на самом деле — какая у него базовая личность.</li>
@@ -9162,13 +9237,13 @@ details[open] > .price-toggle-dark::after {
     </div>
 
     <div style="text-align:center; margin-top:22px; margin-bottom:4px;">
-      <span style="font-size:12px; font-weight:600; color:#A57A2E;">Формат</span>
+      <span style="font-size:12px; font-weight:600; color:#A57A2E;">Стоимость</span>
       <span style="font-family:'Lora',Georgia,serif; font-size:17px; font-weight:700; color:#2A0E26;"> 200&nbsp;€</span>
-      <span style="font-size:13px; color:rgba(42,14,38,0.55);"> (разбор + созвон)</span>
-      <div style="font-size:10.5px; color:rgba(42,14,38,0.4); margin-top:3px;">Есть разбор за 150&nbsp;€ без обратной связи · <a href="javascript:void(0)" onclick="showPage('format-tsen'); return false;" style="color:#A57A2E; text-decoration:underline;">Форматы и цены →</a></div>
+      <span style="font-family:'Lora',Georgia,serif; font-size:13px; font-style:italic; color:rgba(42,14,38,0.55);"> (разбор + созвон)</span>
+      <div style="font-size:10.5px; letter-spacing:0.3px; margin-top:10px; padding-top:10px; border-top:1px solid rgba(165,122,46,0.18);"><a href="javascript:void(0)" onclick="showPage('format-tsen'); return false;" style="color:#A57A2E; text-decoration:none; font-weight:600; border-bottom:1px solid rgba(165,122,46,0.45); padding-bottom:1px;">Форматы и цены →</a></div>
     </div>
 
-    <a href="https://t.me/astrolog_prognozi?text=%D0%94%D0%BE%D0%B1%D1%80%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%80%D0%B0%D0%B7%D0%B1%D0%BE%D1%80%20%C2%AB%D0%A1%D0%BE%D0%B2%D0%BC%D0%B5%D1%81%D1%82%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D1%8C%C2%BB" class="card-button glow-button" style="display:block; text-align:center; margin-top:12px;">Хочу этот разбор</a>
+    <a href="https://t.me/astrolog_prognozi?text=%D0%94%D0%BE%D0%B1%D1%80%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%80%D0%B0%D0%B7%D0%B1%D0%BE%D1%80%20%C2%AB%D0%A1%D0%BE%D0%B2%D0%BC%D0%B5%D1%81%D1%82%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D1%8C%C2%BB" class="card-button glow-button cta-shine" style="display:block; text-align:center; margin-top:12px;">Хочу этот разбор</a>
 
   </div>
 </div>
@@ -9176,7 +9251,6 @@ details[open] > .price-toggle-dark::after {
 <div class="page" id="page-roditelyam-abiturientov">
 <div class="phone-container">
 
-    <!-- ЗАМЕНИТЬ НА ДРУГИХ ЛЕНДИНГАХ: название услуги -->
     <div class="brand-header" style="margin-bottom:10px;">
       <div style="font-size:10px; font-weight:600; letter-spacing:2.5px; text-transform:uppercase; color:#A57A2E; margin-bottom:10px;">КОГДА РЕБЁНОК ВЫБИРАЕТ ПУТЬ</div>
       <h1 class="main-title">Родителям абитуриентов</h1>
@@ -9187,7 +9261,6 @@ details[open] > .price-toggle-dark::after {
     <p style="font-family:'Lora',Georgia,serif; font-size:15px; font-style:italic; line-height:1.65; color:#A57A2E; margin-bottom:0; text-align:center;">Выбор профессии — один из самых важных в жизни. Карта покажет, где у ребёнка настоящий потенциал — до того, как решение принято.</p>
     <div style="width:40px; height:1px; background:rgba(165,122,46,0.35); margin:14px auto 10px;"></div>
 
-    <!-- ЗАМЕНИТЬ НА ДРУГИХ ЛЕНДИНГАХ: список вопросов под услугу -->
     <div class="category-label" style="text-align:center; margin-top:24px; margin-bottom:10px;">Что узнаете</div>
     <ul class="questions-list">
       <li>Какая область органична его природе по карте.</li>
@@ -9197,13 +9270,13 @@ details[open] > .price-toggle-dark::after {
     </ul>
 
     <div style="text-align:center; margin-top:22px; margin-bottom:4px;">
-      <span style="font-size:12px; font-weight:600; color:#A57A2E;">Формат</span>
+      <span style="font-size:12px; font-weight:600; color:#A57A2E;">Стоимость</span>
       <span style="font-family:'Lora',Georgia,serif; font-size:17px; font-weight:700; color:#2A0E26;"> 200&nbsp;€</span>
-      <span style="font-size:13px; color:rgba(42,14,38,0.55);"> (разбор + созвон)</span>
-      <div style="font-size:10.5px; color:rgba(42,14,38,0.4); margin-top:3px;">Есть разбор за 150&nbsp;€ без обратной связи · <a href="javascript:void(0)" onclick="showPage('format-tsen'); return false;" style="color:#A57A2E; text-decoration:underline;">Форматы и цены →</a></div>
+      <span style="font-family:'Lora',Georgia,serif; font-size:13px; font-style:italic; color:rgba(42,14,38,0.55);"> (разбор + созвон)</span>
+      <div style="font-size:10.5px; letter-spacing:0.3px; margin-top:10px; padding-top:10px; border-top:1px solid rgba(165,122,46,0.18);"><a href="javascript:void(0)" onclick="showPage('format-tsen'); return false;" style="color:#A57A2E; text-decoration:none; font-weight:600; border-bottom:1px solid rgba(165,122,46,0.45); padding-bottom:1px;">Форматы и цены →</a></div>
     </div>
 
-    <a href="https://t.me/astrolog_prognozi?text=%D0%94%D0%BE%D0%B1%D1%80%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%80%D0%B0%D0%B7%D0%B1%D0%BE%D1%80%20%C2%AB%D0%A0%D0%BE%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D1%8F%D0%BC%20%D0%B0%D0%B1%D0%B8%D1%82%D1%83%D1%80%D0%B8%D0%B5%D0%BD%D1%82%D0%BE%D0%B2%C2%BB" class="card-button glow-button" style="display:block; text-align:center; margin-top:12px;">Хочу этот разбор</a>
+    <a href="https://t.me/astrolog_prognozi?text=%D0%94%D0%BE%D0%B1%D1%80%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%80%D0%B0%D0%B7%D0%B1%D0%BE%D1%80%20%C2%AB%D0%A0%D0%BE%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D1%8F%D0%BC%20%D0%B0%D0%B1%D0%B8%D1%82%D1%83%D1%80%D0%B8%D0%B5%D0%BD%D1%82%D0%BE%D0%B2%C2%BB" class="card-button glow-button cta-shine" style="display:block; text-align:center; margin-top:12px;">Хочу этот разбор</a>
 
   </div>
 </div>
@@ -9211,7 +9284,6 @@ details[open] > .price-toggle-dark::after {
 <div class="page" id="page-karera-dengi">
 <div class="phone-container">
 
-    <!-- ЗАМЕНИТЬ НА ДРУГИХ ЛЕНДИНГАХ: название услуги -->
     <div class="brand-header" style="margin-bottom:10px;">
       <div style="font-size:10px; font-weight:600; letter-spacing:2.5px; text-transform:uppercase; color:#A57A2E; margin-bottom:10px;">ДЛЯ ТЕХ, КТО ГОТОВ ЗАРАБАТЫВАТЬ БОЛЬШЕ</div>
       <h1 class="main-title">Карьера и Деньги</h1>
@@ -9221,7 +9293,6 @@ details[open] > .price-toggle-dark::after {
     <div style="width:40px; height:1px; background:rgba(165,122,46,0.35); margin:10px auto 14px;"></div>
     <p style="font-family:'Lora',Georgia,serif; font-size:15px; font-style:italic; line-height:1.65; color:#A57A2E; margin-bottom:0; text-align:center;">Вы уже многого достигли.<br>Карта покажет — где ваш реальный потолок и что мешает взять больше.</p>
 
-    <!-- ЗАМЕНИТЬ НА ДРУГИХ ЛЕНДИНГАХ: список вопросов под услугу -->
     <div class="category-label" style="text-align:center; margin-top:24px; margin-bottom:10px;">Что узнаете</div>
     <ul class="questions-list">
       <li>Наёмный труд или своё дело — что органичнее вашей природе.</li>
@@ -9231,13 +9302,13 @@ details[open] > .price-toggle-dark::after {
     </ul>
 
     <div style="text-align:center; margin-top:22px; margin-bottom:4px;">
-      <span style="font-size:12px; font-weight:600; color:#A57A2E;">Формат</span>
+      <span style="font-size:12px; font-weight:600; color:#A57A2E;">Стоимость</span>
       <span style="font-family:'Lora',Georgia,serif; font-size:17px; font-weight:700; color:#2A0E26;"> 200&nbsp;€</span>
-      <span style="font-size:13px; color:rgba(42,14,38,0.55);"> (разбор + созвон)</span>
-      <div style="font-size:10.5px; color:rgba(42,14,38,0.4); margin-top:3px;">Есть разбор за 150&nbsp;€ без обратной связи · <a href="javascript:void(0)" onclick="showPage('format-tsen'); return false;" style="color:#A57A2E; text-decoration:underline;">Форматы и цены →</a></div>
+      <span style="font-family:'Lora',Georgia,serif; font-size:13px; font-style:italic; color:rgba(42,14,38,0.55);"> (разбор + созвон)</span>
+      <div style="font-size:10.5px; letter-spacing:0.3px; margin-top:10px; padding-top:10px; border-top:1px solid rgba(165,122,46,0.18);"><a href="javascript:void(0)" onclick="showPage('format-tsen'); return false;" style="color:#A57A2E; text-decoration:none; font-weight:600; border-bottom:1px solid rgba(165,122,46,0.45); padding-bottom:1px;">Форматы и цены →</a></div>
     </div>
 
-    <a href="https://t.me/astrolog_prognozi?text=%D0%94%D0%BE%D0%B1%D1%80%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%80%D0%B0%D0%B7%D0%B1%D0%BE%D1%80%20%C2%AB%D0%9A%D0%B0%D1%80%D1%8C%D0%B5%D1%80%D0%B0%20%D0%B8%20%D0%94%D0%B5%D0%BD%D1%8C%D0%B3%D0%B8%C2%BB" class="card-button glow-button" style="display:block; text-align:center; margin-top:12px;">Хочу этот разбор</a>
+    <a href="https://t.me/astrolog_prognozi?text=%D0%94%D0%BE%D0%B1%D1%80%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%80%D0%B0%D0%B7%D0%B1%D0%BE%D1%80%20%C2%AB%D0%9A%D0%B0%D1%80%D1%8C%D0%B5%D1%80%D0%B0%20%D0%B8%20%D0%94%D0%B5%D0%BD%D1%8C%D0%B3%D0%B8%C2%BB" class="card-button glow-button cta-shine" style="display:block; text-align:center; margin-top:12px;">Хочу этот разбор</a>
 
   </div>
 </div>
@@ -9245,7 +9316,6 @@ details[open] > .price-toggle-dark::after {
 <div class="page" id="page-nedvizhimost">
 <div class="phone-container">
 
-    <!-- ЗАМЕНИТЬ НА ДРУГИХ ЛЕНДИНГАХ: название услуги -->
     <div class="brand-header" style="margin-bottom:10px;">
       <div style="font-size:10px; font-weight:600; letter-spacing:2.5px; text-transform:uppercase; color:#A57A2E; margin-bottom:10px;">ПРЕЖДЕ ЧЕМ ПОДПИСЫВАТЬ ДОКУМЕНТЫ</div>
       <h1 class="main-title">Недвижимость</h1>
@@ -9255,7 +9325,6 @@ details[open] > .price-toggle-dark::after {
     <div style="width:40px; height:1px; background:rgba(165,122,46,0.35); margin:10px auto 14px;"></div>
     <p style="font-family:'Lora',Georgia,serif; font-size:15px; font-style:italic; line-height:1.65; color:#A57A2E; margin-bottom:0; text-align:center;">Покупка, продажа, кредит — это большие деньги и большие решения. Карта покажет, когда время подходящее — а когда лучше подождать.</p>
 
-    <!-- ЗАМЕНИТЬ НА ДРУГИХ ЛЕНДИНГАХ: список вопросов под услугу -->
     <div class="category-label" style="text-align:center; margin-top:24px; margin-bottom:10px;">Что узнаете</div>
     <ul class="questions-list">
       <li>Благоприятные периоды для покупки или продажи в ближайшие 2 года.</li>
@@ -9265,13 +9334,13 @@ details[open] > .price-toggle-dark::after {
     </ul>
 
     <div style="text-align:center; margin-top:22px; margin-bottom:4px;">
-      <span style="font-size:12px; font-weight:600; color:#A57A2E;">Формат</span>
+      <span style="font-size:12px; font-weight:600; color:#A57A2E;">Стоимость</span>
       <span style="font-family:'Lora',Georgia,serif; font-size:17px; font-weight:700; color:#2A0E26;"> 200&nbsp;€</span>
-      <span style="font-size:13px; color:rgba(42,14,38,0.55);"> (разбор + созвон)</span>
-      <div style="font-size:10.5px; color:rgba(42,14,38,0.4); margin-top:3px;">Есть разбор за 150&nbsp;€ без обратной связи · <a href="javascript:void(0)" onclick="showPage('format-tsen'); return false;" style="color:#A57A2E; text-decoration:underline;">Форматы и цены →</a></div>
+      <span style="font-family:'Lora',Georgia,serif; font-size:13px; font-style:italic; color:rgba(42,14,38,0.55);"> (разбор + созвон)</span>
+      <div style="font-size:10.5px; letter-spacing:0.3px; margin-top:10px; padding-top:10px; border-top:1px solid rgba(165,122,46,0.18);"><a href="javascript:void(0)" onclick="showPage('format-tsen'); return false;" style="color:#A57A2E; text-decoration:none; font-weight:600; border-bottom:1px solid rgba(165,122,46,0.45); padding-bottom:1px;">Форматы и цены →</a></div>
     </div>
 
-    <a href="https://t.me/astrolog_prognozi?text=%D0%94%D0%BE%D0%B1%D1%80%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%80%D0%B0%D0%B7%D0%B1%D0%BE%D1%80%20%C2%AB%D0%9D%D0%B5%D0%B4%D0%B2%D0%B8%D0%B6%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D1%8C%C2%BB" class="card-button glow-button" style="display:block; text-align:center; margin-top:12px;">Хочу этот разбор</a>
+    <a href="https://t.me/astrolog_prognozi?text=%D0%94%D0%BE%D0%B1%D1%80%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%80%D0%B0%D0%B7%D0%B1%D0%BE%D1%80%20%C2%AB%D0%9D%D0%B5%D0%B4%D0%B2%D0%B8%D0%B6%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D1%8C%C2%BB" class="card-button glow-button cta-shine" style="display:block; text-align:center; margin-top:12px;">Хочу этот разбор</a>
 
   </div>
 </div>
@@ -9301,13 +9370,13 @@ details[open] > .price-toggle-dark::after {
     <p style="font-size:13px; color:rgba(42,14,38,0.55); line-height:1.6; text-align:center; margin-top:14px; font-style:italic;">В разбор входит построение 3 релокационных карт — по городам, которые выберете вы.</p>
 
     <div style="text-align:center; margin-top:22px; margin-bottom:4px;">
-      <span style="font-size:12px; font-weight:600; color:#A57A2E;">Формат</span>
+      <span style="font-size:12px; font-weight:600; color:#A57A2E;">Стоимость</span>
       <span style="font-family:'Lora',Georgia,serif; font-size:17px; font-weight:700; color:#2A0E26;"> 200&nbsp;€</span>
-      <span style="font-size:13px; color:rgba(42,14,38,0.55);"> (разбор + созвон)</span>
-      <div style="font-size:10.5px; color:rgba(42,14,38,0.4); margin-top:3px;">Есть разбор за 150&nbsp;€ без обратной связи · <a href="javascript:void(0)" onclick="showPage('format-tsen'); return false;" style="color:#A57A2E; text-decoration:underline;">Форматы и цены →</a></div>
+      <span style="font-family:'Lora',Georgia,serif; font-size:13px; font-style:italic; color:rgba(42,14,38,0.55);"> (разбор + созвон)</span>
+      <div style="font-size:10.5px; letter-spacing:0.3px; margin-top:10px; padding-top:10px; border-top:1px solid rgba(165,122,46,0.18);"><a href="javascript:void(0)" onclick="showPage('format-tsen'); return false;" style="color:#A57A2E; text-decoration:none; font-weight:600; border-bottom:1px solid rgba(165,122,46,0.45); padding-bottom:1px;">Форматы и цены →</a></div>
     </div>
 
-    <a href="https://t.me/astrolog_prognozi?text=%D0%94%D0%BE%D0%B1%D1%80%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%80%D0%B0%D0%B7%D0%B1%D0%BE%D1%80%20%C2%AB%D0%A0%D0%B5%D0%BB%D0%BE%D0%BA%D0%B0%D1%86%D0%B8%D1%8F%20%D0%B8%20%D0%BF%D0%B5%D1%80%D0%B5%D0%B5%D0%B7%D0%B4%D1%8B%C2%BB" class="card-button glow-button" style="display:block; text-align:center; margin-top:12px; margin-bottom:24px;">Хочу этот разбор</a>
+    <a href="https://t.me/astrolog_prognozi?text=%D0%94%D0%BE%D0%B1%D1%80%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%80%D0%B0%D0%B7%D0%B1%D0%BE%D1%80%20%C2%AB%D0%A0%D0%B5%D0%BB%D0%BE%D0%BA%D0%B0%D1%86%D0%B8%D1%8F%20%D0%B8%20%D0%BF%D0%B5%D1%80%D0%B5%D0%B5%D0%B7%D0%B4%D1%8B%C2%BB" class="card-button glow-button cta-shine" style="display:block; text-align:center; margin-top:12px; margin-bottom:24px;">Хочу этот разбор</a>
 
     <div style="display:flex; flex-direction:column; background-color:rgba(196, 140, 90, 0.09); border:1px solid rgba(196, 140, 90, 0.34); border-radius:12px; padding:16px;">
       <div style="display:flex; align-items:center; gap:12px; margin-bottom:10px;">
@@ -9319,7 +9388,7 @@ details[open] > .price-toggle-dark::after {
         </div>
         <div class="info-card-title" style="margin-bottom:0;">Дополнительно</div>
       </div>
-      <div class="info-card-sub">3 релокационные карты городов уже включены в разбор. Каждый город сверх этих трёх — <strong>30 €</strong>.<br><br>Каир или Александрия? Барселона или Валенсия?<br>Дубай или Абу-Даби? Каждый дополнительный город рассчитывается отдельно.</div>
+      <div class="info-card-sub">3 релокационные карты городов уже включены в разбор. Каждый город сверх этих трёх — <strong>30&nbsp;€</strong>.<br><br>Каир или Александрия? Барселона или Валенсия?<br>Дубай или Абу-Даби? Каждый дополнительный город рассчитывается отдельно.</div>
     </div>
 
   </div>
@@ -9328,7 +9397,6 @@ details[open] > .price-toggle-dark::after {
 <div class="page" id="page-sudebnye-dela">
 <div class="phone-container">
 
-    <!-- ЗАМЕНИТЬ НА ДРУГИХ ЛЕНДИНГАХ: название услуги -->
     <div class="brand-header" style="margin-bottom:10px;">
       <div style="font-size:10px; font-weight:600; letter-spacing:2.5px; text-transform:uppercase; color:#A57A2E; margin-bottom:10px;">КОГДА СТАВКИ ВЫСОКИ</div>
       <h1 class="main-title">Судебные дела</h1>
@@ -9338,7 +9406,6 @@ details[open] > .price-toggle-dark::after {
     <div style="width:40px; height:1px; background:rgba(165,122,46,0.35); margin:10px auto 14px;"></div>
     <p style="font-family:'Lora',Georgia,serif; font-size:15px; font-style:italic; line-height:1.65; color:#A57A2E; margin-bottom:0; text-align:center;">Суд — это нервы, деньги и время. Карта покажет, на чьей стороне расклад — и что можно сделать, чтобы усилить свою позицию.</p>
 
-    <!-- ЗАМЕНИТЬ НА ДРУГИХ ЛЕНДИНГАХ: список вопросов под услугу -->
     <div class="category-label" style="text-align:center; margin-top:24px; margin-bottom:10px;">Что узнаете</div>
     <ul class="questions-list">
       <li>Примерные сроки разбирательства — чтобы планировать, а не жить в неизвестности.</li>
@@ -9348,13 +9415,13 @@ details[open] > .price-toggle-dark::after {
     </ul>
 
     <div style="text-align:center; margin-top:22px; margin-bottom:4px;">
-      <span style="font-size:12px; font-weight:600; color:#A57A2E;">Формат</span>
+      <span style="font-size:12px; font-weight:600; color:#A57A2E;">Стоимость</span>
       <span style="font-family:'Lora',Georgia,serif; font-size:17px; font-weight:700; color:#2A0E26;"> 200&nbsp;€</span>
-      <span style="font-size:13px; color:rgba(42,14,38,0.55);"> (разбор + созвон)</span>
-      <div style="font-size:10.5px; color:rgba(42,14,38,0.4); margin-top:3px;">Есть разбор за 150&nbsp;€ без обратной связи · <a href="javascript:void(0)" onclick="showPage('format-tsen'); return false;" style="color:#A57A2E; text-decoration:underline;">Форматы и цены →</a></div>
+      <span style="font-family:'Lora',Georgia,serif; font-size:13px; font-style:italic; color:rgba(42,14,38,0.55);"> (разбор + созвон)</span>
+      <div style="font-size:10.5px; letter-spacing:0.3px; margin-top:10px; padding-top:10px; border-top:1px solid rgba(165,122,46,0.18);"><a href="javascript:void(0)" onclick="showPage('format-tsen'); return false;" style="color:#A57A2E; text-decoration:none; font-weight:600; border-bottom:1px solid rgba(165,122,46,0.45); padding-bottom:1px;">Форматы и цены →</a></div>
     </div>
 
-    <a href="https://t.me/astrolog_prognozi?text=%D0%94%D0%BE%D0%B1%D1%80%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%80%D0%B0%D0%B7%D0%B1%D0%BE%D1%80%20%C2%AB%D0%A1%D1%83%D0%B4%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B4%D0%B5%D0%BB%D0%B0%C2%BB" class="card-button glow-button" style="display:block; text-align:center; margin-top:12px;">Хочу этот разбор</a>
+    <a href="https://t.me/astrolog_prognozi?text=%D0%94%D0%BE%D0%B1%D1%80%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%80%D0%B0%D0%B7%D0%B1%D0%BE%D1%80%20%C2%AB%D0%A1%D1%83%D0%B4%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B4%D0%B5%D0%BB%D0%B0%C2%BB" class="card-button glow-button cta-shine" style="display:block; text-align:center; margin-top:12px;">Хочу этот разбор</a>
 
   </div>
 </div>
@@ -9362,7 +9429,6 @@ details[open] > .price-toggle-dark::after {
 <div class="page" id="page-sfera-zdorovya">
 <div class="phone-container">
 
-    <!-- ЗАМЕНИТЬ НА ДРУГИХ ЛЕНДИНГАХ: название услуги -->
     <div class="brand-header" style="margin-bottom:10px;">
       <div style="font-size:10px; font-weight:600; letter-spacing:2.5px; text-transform:uppercase; color:#A57A2E; margin-bottom:10px;">КОГДА ТЕЛО ГОВОРИТ — СТОИТ ПОСЛУШАТЬ</div>
       <h1 class="main-title">Здоровье</h1>
@@ -9372,7 +9438,6 @@ details[open] > .price-toggle-dark::after {
     <div style="width:40px; height:1px; background:rgba(165,122,46,0.35); margin:10px auto 14px;"></div>
     <p style="font-family:'Lora',Georgia,serif; font-size:15px; font-style:italic; line-height:1.65; color:#A57A2E; margin-bottom:0; text-align:center;">Карта рождения показывает слабые места в здоровье — и когда им нужно особое внимание. Не диагноз. Но предупреждение вовремя.</p>
 
-    <!-- ЗАМЕНИТЬ НА ДРУГИХ ЛЕНДИНГАХ: список вопросов под услугу -->
     <div class="category-label" style="text-align:center; margin-top:24px; margin-bottom:10px;">Что узнаете</div>
     <ul class="questions-list">
       <li>Как гармонизировать здоровье — через что именно вы наполняетесь силой и энергией.</li>
@@ -9383,13 +9448,13 @@ details[open] > .price-toggle-dark::after {
     </ul>
 
     <div style="text-align:center; margin-top:22px; margin-bottom:4px;">
-      <span style="font-size:12px; font-weight:600; color:#A57A2E;">Формат</span>
+      <span style="font-size:12px; font-weight:600; color:#A57A2E;">Стоимость</span>
       <span style="font-family:'Lora',Georgia,serif; font-size:17px; font-weight:700; color:#2A0E26;"> 200&nbsp;€</span>
-      <span style="font-size:13px; color:rgba(42,14,38,0.55);"> (разбор + созвон)</span>
-      <div style="font-size:10.5px; color:rgba(42,14,38,0.4); margin-top:3px;">Есть разбор за 150&nbsp;€ без обратной связи · <a href="javascript:void(0)" onclick="showPage('format-tsen'); return false;" style="color:#A57A2E; text-decoration:underline;">Форматы и цены →</a></div>
+      <span style="font-family:'Lora',Georgia,serif; font-size:13px; font-style:italic; color:rgba(42,14,38,0.55);"> (разбор + созвон)</span>
+      <div style="font-size:10.5px; letter-spacing:0.3px; margin-top:10px; padding-top:10px; border-top:1px solid rgba(165,122,46,0.18);"><a href="javascript:void(0)" onclick="showPage('format-tsen'); return false;" style="color:#A57A2E; text-decoration:none; font-weight:600; border-bottom:1px solid rgba(165,122,46,0.45); padding-bottom:1px;">Форматы и цены →</a></div>
     </div>
 
-    <a href="https://t.me/astrolog_prognozi?text=%D0%94%D0%BE%D0%B1%D1%80%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%80%D0%B0%D0%B7%D0%B1%D0%BE%D1%80%20%C2%AB%D0%97%D0%B4%D0%BE%D1%80%D0%BE%D0%B2%D1%8C%D0%B5%C2%BB" class="card-button glow-button" style="display:block; text-align:center; margin-top:12px;">Хочу этот разбор</a>
+    <a href="https://t.me/astrolog_prognozi?text=%D0%94%D0%BE%D0%B1%D1%80%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%80%D0%B0%D0%B7%D0%B1%D0%BE%D1%80%20%C2%AB%D0%97%D0%B4%D0%BE%D1%80%D0%BE%D0%B2%D1%8C%D0%B5%C2%BB" class="card-button glow-button cta-shine" style="display:block; text-align:center; margin-top:12px;">Хочу этот разбор</a>
 
   </div>
 </div>
@@ -9397,7 +9462,6 @@ details[open] > .price-toggle-dark::after {
 <div class="page" id="page-blagopriyatnaya-data">
 <div class="phone-container">
 
-    <!-- ЗАМЕНИТЬ НА ДРУГИХ ЛЕНДИНГАХ: название услуги -->
     <div class="brand-header" style="margin-bottom:10px;">
       <div style="font-size:10px; font-weight:600; letter-spacing:2.5px; text-transform:uppercase; color:#A57A2E; margin-bottom:10px;">КОГДА ВАЖЕН КАЖДЫЙ ШАГ</div>
       <h1 class="main-title">Благоприятная дата</h1>
@@ -9408,7 +9472,6 @@ details[open] > .price-toggle-dark::after {
     <p style="font-family:'Lora',Georgia,serif; font-size:15px; font-style:italic; line-height:1.65; color:#A57A2E; margin-bottom:0; text-align:center;">«Как корабль назовёшь, так он и поплывёт». С большим делом так же — дата старта задаёт ему судьбу.</p>
     <div style="width:40px; height:1px; background:rgba(165,122,46,0.35); margin:14px auto 10px;"></div>
 
-    <!-- ЗАМЕНИТЬ НА ДРУГИХ ЛЕНДИНГАХ: список под услугу -->
     <h2 class="section-subtitle">Подберём удачную дату для:</h2>
     <ul class="questions-list">
       <li>Свадьбы и заключения брака.</li>
@@ -9423,7 +9486,7 @@ details[open] > .price-toggle-dark::after {
       <div class="price-card premium">
         <div class="price-header">
           <div class="price-title">Подбор даты</div>
-          <div class="price-value">70 €</div>
+          <div class="price-value">70&nbsp;€</div>
         </div>
         <div style="font-size:11px; font-weight:600; letter-spacing:1px; text-transform:uppercase; color:rgba(230,184,106,0.6); margin-bottom:10px;">за 1 событие</div>
         <div class="price-lead">Удачная дата под ваше событие — в письменном виде, без обратной связи.</div>
@@ -9453,7 +9516,7 @@ function getCurrentPageId() {
 // Handle URL hash on load
 window.addEventListener('DOMContentLoaded', function() {
   const hash = window.location.hash.replace('#', '');
-  const validPages = ['home', 'razbory', 'coaching', 'moy-podhod', 'otzyvy', 'faq', 'astroportret', 'blagopriyatnaya-data', 'contacts', 'dannye', 'format-tsen', 'goroskop-na-god', 'goroskop-voprosa', 'individualnaya', 'karera-dengi', 'korolevskie-zvezdy', 'lichnaya-zhizn', 'nedvizhimost', 'put-dushi', 'rektifikaciya', 'relokacia', 'roditelyam-abiturientov', 'sfera-zdorovya', 'sovmestimost', 'sudebnye-dela'];
+  const validPages = ['home', 'razbory', 'coaching', 'moy-podhod', 'otzyvy', 'faq', 'astroportret', 'blagopriyatnaya-data', 'contacts', 'dannye', 'format-tsen', 'goroskop-na-god', 'individualnaya', 'karera-dengi', 'korolevskie-zvezdy', 'lichnaya-zhizn', 'nedvizhimost', 'put-dushi', 'rektifikaciya', 'relokacia', 'roditelyam-abiturientov', 'sfera-zdorovya', 'sovmestimost', 'sudebnye-dela'];
   if (hash && validPages.includes(hash)) {
     showPage(hash);
   }
@@ -9840,7 +9903,7 @@ html body .hero-message {
   color: #2A0E26 !important;
 }
 
-/* === Непремиум-кнопка (150€): бежевая, чуть меньше премиум === */
+/* === Непремиум-кнопка (150&nbsp;€): бежевая, чуть меньше премиум === */
 html body .price-card:not(.premium) .card-button {
   background-color: rgba(184, 137, 62, 0.13) !important;
   border: 1px solid rgba(184, 137, 62, 0.35) !important;
@@ -10505,17 +10568,17 @@ html body .category-label {
   letter-spacing: 2.5px !important;
   text-transform: uppercase !important;
   color: #A57A2E !important;
-  margin-top: 28px !important;
+  margin-top: 4px !important;
   margin-bottom: 4px !important;
-  padding-top: 18px !important;
-  border-top: 1px solid rgba(165, 122, 46, 0.3) !important;
+  padding-top: 0 !important;
+  border-top: none !important;
 }
 
-/* Первая метка — без верхней линии */
-html body .category-label:first-of-type {
-  border-top: none !important;
-  padding-top: 0 !important;
-  margin-top: 4px !important;
+/* Линия-разделитель — только когда перед категорией уже была другая категория (несколько разделов на странице) */
+html body .category-label ~ .category-label {
+  margin-top: 28px !important;
+  padding-top: 18px !important;
+  border-top: 1px solid rgba(165, 122, 46, 0.3) !important;
 }
 
 /* "Конкретные решения и события" — мелко, курсив, приглушённо */
@@ -10570,7 +10633,7 @@ html body .category-sub {
         <div class="price-header">
           <div style="margin-bottom:6px;">
             <div style="font-family:'Lora',Georgia,serif; font-size:17px; font-weight:700; color:#E6B86A; line-height:1.2; margin-bottom:4px;">Ректификация</div>
-            <div style="font-family:'Lora',Georgia,serif; font-size:30px; font-weight:700; color:#E6B86A; line-height:1;">150 €</div>
+            <div style="font-family:'Lora',Georgia,serif; font-size:30px; font-weight:700; color:#E6B86A; line-height:1;">150&nbsp;€</div>
           </div>
         </div>
         <ul class="check-list" style="margin-bottom:12px;">
@@ -10582,65 +10645,6 @@ html body .category-sub {
         <a href="https://docs.google.com/document/d/18NTb3Se4IE6lbOtuZxlb4yDxHJ4QGb2M/export?format=docx" class="card-button" target="_blank" style="margin-bottom:10px;">↓ Скачать анкету (Word)</a>
         <a href="https://t.me/astrolog_prognozi?text=%D0%94%D0%BE%D0%B1%D1%80%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D1%8C%20%D1%80%D0%B5%D0%BA%D1%82%D0%B8%D1%84%D0%B8%D0%BA%D0%B0%D1%86%D0%B8%D1%8E" class="card-button glow-button">Хочу этот разбор</a>
       </div>
-    </div>
-
-</div>
-</div>
-
-<div class="page" id="page-goroskop-voprosa">
-<div class="phone-container">
-
-    <div class="brand-header" style="margin-bottom:10px;">
-      <div style="font-size:10px; font-weight:600; letter-spacing:2.5px; text-transform:uppercase; color:#A57A2E; margin-bottom:10px;">КОГДА НУЖЕН ОТВЕТ ПРЯМО СЕЙЧАС</div>
-      <h1 class="main-title">Гороскоп вопроса</h1>
-      <div class="title-accent-line"></div>
-    </div>
-
-    <div style="width:40px; height:1px; background:rgba(165,122,46,0.35); margin:10px auto 14px;"></div>
-    <p style="font-family:'Lora',Georgia,serif; font-size:15px; font-style:italic; line-height:1.65; color:#A57A2E; margin-bottom:0; text-align:center;">Один конкретный вопрос — один чёткий ответ. Без даты рождения, без долгого разбора.</p>
-    <div style="width:40px; height:1px; background:rgba(165,122,46,0.35); margin:14px auto 10px;"></div>
-
-    <div class="info-card info-card-vertical" style="cursor:default;">
-      <div style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
-        <div class="info-card-icon" style="margin-bottom:0; flex-shrink:0;">
-          <svg viewBox="0 0 24 24">
-            <circle cx="12" cy="12" r="9"/>
-            <line x1="12" y1="8" x2="12" y2="12"/>
-            <circle cx="12" cy="16" r="0.5" fill="currentColor"/>
-          </svg>
-        </div>
-        <div class="info-card-title" style="margin-bottom:0;">Дополняет, а не заменяет натальную карту</div>
-      </div>
-      <div class="info-card-sub">Отдельная техника — для вопросов, на которые натальная карта не отвечает. Я строю карту на момент вопроса и в натальную карту не заглядываю — даже если вы уже делали у меня другой разбор.</div>
-    </div>
-
-    <h2 class="section-subtitle">Что хорошо смотреть:</h2>
-    <ul class="questions-list">
-      <li>Какую из квартир выбрать — даже если все в одном городе или районе.</li>
-      <li>Как именно человек относится ко мне на самом деле.</li>
-      <li>Любой конкретный вопрос с вариантами ответов.</li>
-      <li>Если у вас (или у того, о ком вопрос) нет точного времени рождения — эта техника тоже подойдёт.</li>
-    </ul>
-
-    <h2 class="section-subtitle">Важно понимать:</h2>
-    <ul class="questions-list">
-      <li>Это срез ситуации на момент вопроса — не прогноз на всю жизнь.</li>
-      <li>Горизонт: до 6 месяцев.</li>
-      <li>Вопрос должен быть искренним и по-настоящему наболевшим — только тогда карта даёт чёткий ответ.</li>
-    </ul>
-
-    <div class="price-section">
-
-      <div class="price-card premium">
-        <div class="price-header">
-          <div class="price-title">Гороскоп вопроса</div>
-          <div class="price-value">70 €</div>
-        </div>
-        <div style="font-size:11px; font-weight:600; letter-spacing:1px; text-transform:uppercase; color:rgba(230,184,106,0.6); margin-bottom:10px;">за 1 вопрос</div>
-        <div class="price-lead">Ответ на ваш вопрос — в письменном виде, без обратной связи.</div>
-        <a href="https://t.me/astrolog_prognozi?text=%D0%94%D0%BE%D0%B1%D1%80%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B3%D0%BE%D1%80%D0%BE%D1%81%D0%BA%D0%BE%D0%BF%20%D0%B2%D0%BE%D0%BF%D1%80%D0%BE%D1%81%D0%B0" class="card-button glow-button">Хочу этот разбор</a>
-      </div>
-
     </div>
 
 </div>
